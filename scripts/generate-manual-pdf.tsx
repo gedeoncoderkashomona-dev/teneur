@@ -218,7 +218,7 @@ function TeneurEmblem({ size = 56 }: { size?: number }) {
       <Rect x="0" y="0" width="64" height="64" rx="16" fill="#1F6E7A" />
       <Path
         d="M12 46 C20 42, 44 42, 52 46"
-        stroke="rgba(255,255,255,0.25)"
+        stroke="#7BAEB6"
         strokeWidth="1.4"
         fill="none"
       />
@@ -480,7 +480,7 @@ function TeneurManualDocument() {
         <Text style={s.h2}>Os 4 atalhos inteligentes da barra superior</Text>
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Seletor de Mês (◀ Outubro/2026 ▶)</Text>
+            <Text style={s.stepTitle}>Seletor de Mês (&lt; Outubro/2026 &gt;)</Text>
             <Text style={s.stepText}>
               Troca instantaneamente todo o sistema (gráficos, calendário, medições e PDFs) entre meses passados, mês atual e meses futuros.
             </Text>
@@ -488,7 +488,7 @@ function TeneurManualDocument() {
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>Empresa Ativa (logo abaixo de Teneur)</Text>
             <Text style={s.stepText}>
-              Toque em “Terra Sol ⌄” para alternar entre empresas ou adicionar outra empresa futuramente — os PDFs acompanham automaticamente a empresa escolhida.
+              Toque em “Terra Sol” (com a setinha ao lado) para alternar entre empresas ou adicionar outra empresa futuramente — os PDFs acompanham automaticamente a empresa escolhida.
             </Text>
           </View>
         </View>
@@ -531,7 +531,7 @@ function TeneurManualDocument() {
           />
           <Step
             num="2"
-            title="Toque em Compartilhar → Adicionar à Tela de Início"
+            title="Toque em Compartilhar e depois em Adicionar à Tela de Início"
             text="Toque no ícone de compartilhar na barra inferior do Safari (quadrado com seta para cima), role o menu e escolha “Adicionar à Tela de Início”."
           />
           <Step
@@ -614,8 +614,8 @@ function TeneurManualDocument() {
             </Text>
             <Text style={s.stepText}>
               • Dias apenas de ensaios (EP, E.A, Vane Test) ou parada aguardando liberação de cliente;{'\n'}
-              • Dias de sondagem em que (metros × R$/m) for MENOR que a diária mínima.{'\n'}
-              Ex.: 8,45 m × R$ 60 = R$ 507,00 (&lt; R$ 1.050,00) → o Teneur converte sozinho para 1,0 Diária (R$ 1.050,00)!
+              • Dias de sondagem em que (metros x R$/m) for MENOR que a diária mínima.{'\n'}
+              Ex.: 8,45 m x R$ 60 = R$ 507,00 (menor que R$ 1.050,00): o Teneur converte sozinho para 1,0 Diária (R$ 1.050,00)!
             </Text>
           </View>
 
@@ -624,8 +624,8 @@ function TeneurManualDocument() {
               Quando fatura por Metro (Auto)
             </Text>
             <Text style={s.stepText}>
-              • Dias de sondagem em que (metros × R$/m) atingir ou superar a diária mínima.{'\n'}
-              Ex.: 23,44 m × R$ 60 = R$ 1.406,40 (≥ R$ 1.050,00) → fatura automaticamente por Metro Perfurado (R$ 1.406,40)!{'\n'}
+              • Dias de sondagem em que (metros x R$/m) atingir ou superar a diária mínima.{'\n'}
+              Ex.: 23,44 m x R$ 60 = R$ 1.406,40 (maior que R$ 1.050,00): fatura automaticamente por Metro Perfurado (R$ 1.406,40)!{'\n'}
               • Precisa de exceção? Em “Regra de Faturamento”, você pode escolher Meia Diária (0,5) ou ajuste manual.
             </Text>
           </View>
@@ -690,7 +690,7 @@ function TeneurManualDocument() {
           <Step
             num="4"
             title="Aprovar status, copiar Resumo WhatsApp e baixar o PDF"
-            text="Mude o status do mês no topo (Aberta → Em Revisão → Fechada → Paga). Use “Resumo WhatsApp” para enviar o fechamento pronto em texto para o sondador ou financeiro, e clique em “Baixar Boletim PDF”."
+            text="Mude o status do mês no topo (Aberta > Em Revisão > Fechada > Paga). Use “Resumo WhatsApp” para enviar o fechamento pronto em texto para o sondador ou financeiro, e clique em “Baixar Boletim PDF”."
           />
         </View>
 
@@ -835,7 +835,7 @@ function TeneurManualDocument() {
               Todo fim de tarde (15 segundos no iPhone)
             </Text>
             <Text style={s.stepText}>
-              Abrir o app Teneur → aba Diário → tocar no dia de hoje das equipes ativas e lançar os furos, ensaios ou status do dia.
+              Abrir o app Teneur, acessar a aba Diário, tocar no dia de hoje das equipes ativas e lançar os furos, ensaios ou status do dia.
             </Text>
           </View>
           <View style={{ marginBottom: 7 }}>
