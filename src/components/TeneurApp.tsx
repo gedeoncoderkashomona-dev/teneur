@@ -15,6 +15,7 @@ import {
 import { computeExecutiveAnalytics } from '@/domain/analytics';
 import { formatMonthYearPT } from '@/domain/formatters';
 import type {
+  CompanyProfile,
   DailyEntry,
   FinancialAdjustment,
   MeasurementStatus,
@@ -25,6 +26,8 @@ import type {
   TeneurDataset,
 } from '@/domain/types';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
+import { CompanySwitcher } from '@/components/ui/CompanySwitcher';
+import { TeneurSplash } from '@/components/ui/TeneurSplash';
 import { ExecutiveOverview } from '@/components/views/ExecutiveOverview';
 import { FieldDiaryView } from '@/components/views/FieldDiaryView';
 import { MeasurementsView } from '@/components/views/MeasurementsView';
@@ -101,6 +104,11 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'measurements' },
+        () => void refreshDataset()
+      )
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'signatory_settings' },
         () => void refreshDataset()
       )
       .subscribe();
@@ -232,6 +240,32 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
     }
   }
 
+  async function handleSelectCompany(companyId: string) {
+    const res = await fetch('/api/companies', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ companyId }),
+    });
+    if (res.ok) {
+      const active = (await res.json()) as SignatoryConfig;
+      setIncludeLegalRep(active.includeLegalRepresentative);
+      await refreshDataset();
+      notify(`Empresa ativa: ${active.companyName}`);
+    }
+  }
+
+  async function handleCreateCompany(company: Omit<CompanyProfile, 'id'>) {
+    const res = await fetch('/api/companies', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(company),
+    });
+    if (res.ok) {
+      await refreshDataset();
+      notify(`Empresa "${company.companyName}" adicionada.`);
+    }
+  }
+
   const navItems: Array<{
     key: ActiveTab;
     label: string;
@@ -246,16 +280,28 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
   ];
 
   return (
-    <div className="flex min-h-dvh flex-col lg:flex-row">
+    <>
+      <TeneurSplash
+        activeCompanyName={`${dataset.signatory.companyName} · ${dataset.signatory.companySubtitle}`}
+      />
+      <div className="flex min-h-dvh flex-col lg:flex-row">
       <aside className="glass-bar sticky top-0 hidden h-dvh w-64 shrink-0 flex-col justify-between border-r px-4 py-6 lg:flex">
         <div>
-          <div className="flex items-center gap-3 px-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#1F6E7A] text-white shadow-xs">
+          <div className="flex items-start gap-3 px-2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#1F6E7A] text-white shadow-xs">
               <span className="text-lg font-light tracking-tight">T</span>
             </div>
-            <div>
-              <p className="text-lg font-medium tracking-tight text-[#181B20]">Teneur</p>
-              <p className="text-[11px] text-[#7C8594]">Terra Sol Engenharia</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-lg font-medium leading-tight tracking-tight text-[#181B20]">
+                Teneur
+              </p>
+              <CompanySwitcher
+                companies={dataset.companies}
+                activeCompanyName={dataset.signatory.companyName}
+                activeCompanySubtitle={dataset.signatory.companySubtitle}
+                onSelectCompany={handleSelectCompany}
+                onCreateCompany={handleCreateCompany}
+              />
             </div>
           </div>
 
@@ -316,17 +362,26 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
         <header className="glass-bar sticky top-0 z-30 border-b px-4 py-3 sm:px-6">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 lg:hidden">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#1F6E7A] text-sm font-medium text-white">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#1F6E7A] text-sm font-medium text-white">
                 T
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-semibold leading-tight text-[#181B20]">Teneur</p>
-                <p className="text-[10px] text-[#7C8594]">Terra Sol</p>
+                <CompanySwitcher
+                  compact
+                  companies={dataset.companies}
+                  activeCompanyName={dataset.signatory.companyName}
+                  activeCompanySubtitle={dataset.signatory.companySubtitle}
+                  onSelectCompany={handleSelectCompany}
+                  onCreateCompany={handleCreateCompany}
+                />
               </div>
             </div>
 
             <div className="hidden items-center gap-2 text-xs text-[#525B68] lg:flex">
-              <span className="font-medium text-[#181B20]">Terra Sol Engenharia Geotécnica</span>
+              <span className="font-medium text-[#181B20]">
+                {dataset.signatory.companyName} · {dataset.signatory.companySubtitle}
+              </span>
               <span className="text-[#CBD5E1]">•</span>
               <span>Coordenação: {dataset.signatory.engineerName}</span>
             </div>
@@ -437,7 +492,7 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
           )}
 
           <footer className="mt-12 border-t border-[#181B20]/8 pt-5 text-center text-xs font-light text-[#7C8594]">
-            <span>Teneur · Terra Sol Engenharia Geotécnica · </span>
+            <span>Teneur - Gestão de Serviços · </span>
             <strong className="font-medium text-[#525B68]">Desenvolvido por Okapi Code Forge</strong>
           </footer>
         </main>
@@ -480,5 +535,6 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
         </div>
       )}
     </div>
+    </>
   );
 }

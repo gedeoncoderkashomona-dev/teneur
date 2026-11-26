@@ -1,9 +1,21 @@
 import type { TeneurDataset } from '@/domain/types';
 
 export const TERRA_SOL_SEED: TeneurDataset = {
+  companies: [
+    {
+      id: 'comp-terra-sol',
+      companyName: 'Terra Sol',
+      companySubtitle: 'Engenharia Geotécnica',
+      includeLegalRepresentative: false,
+      legalRepName: 'Eng. Damiana Tavares',
+      legalRepRole: 'Representante Legal',
+      legalRepCpf: '121.647.064-20',
+    },
+  ],
   signatory: {
+    activeCompanyId: 'comp-terra-sol',
     companyName: 'Terra Sol',
-    companySubtitle: 'engenharia geotécnica',
+    companySubtitle: 'Engenharia Geotécnica',
     engineerName: 'Catherine Irina Pascoal Gouveia',
     engineerTitle: 'Engenheira de Minas',
     engineerCrea: '',

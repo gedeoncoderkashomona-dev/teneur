@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Teneur — Gestão de Equipes e Medições Geotécnicas',
+  title: 'Teneur — Gestão de Serviços',
   description:
-    'Plataforma de controle de equipes de campo, boletins de medição, memória de cálculo e inteligência operacional — Terra Sol Engenharia Geotécnica.',
+    'Teneur — Gestão de Serviços, controle de equipes de campo, boletins de medição, memória de cálculo e inteligência operacional.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,

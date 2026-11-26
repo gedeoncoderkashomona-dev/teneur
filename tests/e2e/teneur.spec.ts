@@ -8,8 +8,18 @@ test.describe('Teneur E2E — Fluxo Completo Desktop & Mobile', () => {
   }) => {
     await page.goto('/');
 
+    await expect(page.getByTestId('teneur-splash')).toBeHidden({ timeout: 6000 });
     await expect(page.getByText('Inteligência Operacional & Medições')).toBeVisible();
+    await expect(page.locator('footer')).toContainText('Teneur - Gestão de Serviços');
     await expect(page.locator('footer')).toContainText('Desenvolvido por Okapi Code Forge');
+
+    const companyTrigger = isMobile
+      ? page.getByTestId('mobile-company-switcher')
+      : page.getByTestId('company-switcher');
+    await expect(companyTrigger).toBeVisible();
+    await companyTrigger.click();
+    await expect(page.getByTestId('add-company-btn')).toBeVisible();
+    await companyTrigger.click();
 
     const measurementsNav = isMobile
       ? page.getByTestId('mobile-nav-measurements')
@@ -17,6 +27,7 @@ test.describe('Teneur E2E — Fluxo Completo Desktop & Mobile', () => {
     await measurementsNav.click();
 
     await expect(page.getByText('Boletim de Medição & Memória de Cálculo')).toBeVisible();
+    await page.getByRole('button', { name: 'Leonardo', exact: true }).click();
     await expect(page.getByTestId('net-payable-value')).toContainText('14.045,76');
     await expect(page.getByText('88.769,60').first()).toBeVisible();
 

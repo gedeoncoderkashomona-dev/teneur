@@ -105,6 +105,7 @@ export const projectInputSchema = z.object({
 });
 
 export const signatoryConfigSchema = z.object({
+  activeCompanyId: z.string().optional(),
   companyName: z.string().trim().min(2),
   companySubtitle: z.string().trim().min(2),
   engineerName: z.string().trim().min(3),
@@ -114,4 +115,14 @@ export const signatoryConfigSchema = z.object({
   legalRepName: z.string().trim().min(2),
   legalRepRole: z.string().trim().min(2),
   legalRepCpf: z.string().trim().max(24),
+});
+
+export const companyProfileInputSchema = z.object({
+  id: z.string().optional(),
+  companyName: z.string().trim().min(2, 'Informe o nome da empresa'),
+  companySubtitle: z.string().trim().min(2, 'Informe o segmento ou especialidade'),
+  includeLegalRepresentative: z.boolean().default(false),
+  legalRepName: z.string().trim().max(120).default('Representante Legal'),
+  legalRepRole: z.string().trim().max(80).default('Representante Legal'),
+  legalRepCpf: z.string().trim().max(24).default(''),
 });

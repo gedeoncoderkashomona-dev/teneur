@@ -1,10 +1,12 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
+  activateCompanyProfile,
   deleteDailyEntry,
   getDataset,
   resetMemoryDataset,
   updateMeasurementStatus,
   updateSignatorySettings,
+  upsertCompanyProfile,
   upsertDailyEntry,
   upsertFinancialAdjustment,
   upsertMobilization,
@@ -124,5 +126,21 @@ describe('Teneur Repository Integration', () => {
     await deleteDailyEntry(entry.id);
     const afterDelete = await getDataset();
     expect(afterDelete.dataset.dailyEntries.some((d) => d.id === entry.id)).toBe(false);
+
+    const newCompany = await upsertCompanyProfile({
+      companyName: 'Vale Norte Mineração',
+      companySubtitle: 'Consultoria em Lavra',
+      includeLegalRepresentative: false,
+      legalRepName: 'Representante Legal',
+      legalRepRole: 'Representante Legal',
+      legalRepCpf: '',
+    });
+    const afterCompany = await getDataset();
+    expect(afterCompany.dataset.companies.some((c) => c.id === newCompany.id)).toBe(true);
+    expect(afterCompany.dataset.signatory.companyName).toBe('Vale Norte Mineração');
+
+    await activateCompanyProfile('comp-terra-sol');
+    const afterSwitch = await getDataset();
+    expect(afterSwitch.dataset.signatory.companyName).toBe('Terra Sol');
   });
 });

@@ -12,3 +12,5 @@ pedido-do-app/
 *.log
 *.tsbuildinfo
 .DS_Store
+
+.vercel

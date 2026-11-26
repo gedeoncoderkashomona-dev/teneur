@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 import { TERRA_SOL_SEED } from '@/data/terra-sol-seed';
 import { getSupabaseServerClient } from '@/lib/supabase/server';
 import type {
+  CompanyProfile,
   DailyEntry,
   FinancialAdjustment,
   MeasurementRecord,
@@ -62,7 +63,7 @@ export async function getDataset(): Promise<{
     supabase.from('asset_amortizations').select('*').order('sort_order'),
     supabase.from('measurements').select('*'),
     supabase.from('historical_summaries').select('*').order('reference_month'),
-    supabase.from('signatory_settings').select('*').eq('id', 'default').maybeSingle(),
+    supabase.from('signatory_settings').select('*').order('updated_at', { ascending: true }),
   ]);
 
   if (teamsRes.error || !teamsRes.data || teamsRes.data.length === 0) {
@@ -84,6 +85,48 @@ export async function getDataset(): Promise<{
     });
     amortsByFin.set(row.financing_id, list);
   }
+
+  const allSignatoryRows = sigRes.data ?? [];
+  const defaultRow = allSignatoryRows.find((r) => r.id === 'default');
+  const companyRows = allSignatoryRows.filter((r) => r.id !== 'default');
+
+  const companies: CompanyProfile[] = [
+    ...TERRA_SOL_SEED.companies.filter(
+      (seedComp) =>
+        !companyRows.some(
+          (r) =>
+            r.id === seedComp.id ||
+            String(r.company_name).toLowerCase() === seedComp.companyName.toLowerCase()
+        )
+    ),
+    ...companyRows.map((r) => ({
+      id: r.id,
+      companyName: r.company_name,
+      companySubtitle: r.company_subtitle,
+      includeLegalRepresentative: Boolean(r.include_legal_representative),
+      legalRepName: r.legal_rep_name,
+      legalRepRole: r.legal_rep_role,
+      legalRepCpf: r.legal_rep_cpf,
+    })),
+  ];
+
+  const activeSignatory: SignatoryConfig = defaultRow
+    ? {
+        activeCompanyId:
+          companies.find(
+            (c) => c.companyName.toLowerCase() === String(defaultRow.company_name).toLowerCase()
+          )?.id ?? companies[0]?.id,
+        companyName: defaultRow.company_name,
+        companySubtitle: defaultRow.company_subtitle,
+        engineerName: defaultRow.engineer_name,
+        engineerTitle: defaultRow.engineer_title,
+        engineerCrea: defaultRow.engineer_crea ?? '',
+        includeLegalRepresentative: Boolean(defaultRow.include_legal_representative),
+        legalRepName: defaultRow.legal_rep_name,
+        legalRepRole: defaultRow.legal_rep_role,
+        legalRepCpf: defaultRow.legal_rep_cpf,
+      }
+    : TERRA_SOL_SEED.signatory;
 
   const dataset: TeneurDataset = {
     teams: teamsRes.data.map((r) => ({
@@ -193,19 +236,8 @@ export async function getDataset(): Promise<{
       idleDays: Number(r.idle_days),
       maintenanceDays: Number(r.maintenance_days),
     })),
-    signatory: sigRes.data
-      ? {
-          companyName: sigRes.data.company_name,
-          companySubtitle: sigRes.data.company_subtitle,
-          engineerName: sigRes.data.engineer_name,
-          engineerTitle: sigRes.data.engineer_title,
-          engineerCrea: sigRes.data.engineer_crea ?? '',
-          includeLegalRepresentative: Boolean(sigRes.data.include_legal_representative),
-          legalRepName: sigRes.data.legal_rep_name,
-          legalRepRole: sigRes.data.legal_rep_role,
-          legalRepCpf: sigRes.data.legal_rep_cpf,
-        }
-      : TERRA_SOL_SEED.signatory,
+    signatory: activeSignatory,
+    companies,
   };
 
   return { dataset, storageMode: 'supabase' };
@@ -473,4 +505,77 @@ export async function updateSignatorySettings(config: SignatoryConfig): Promise<
   const mem = getMemoryDataset();
   mem.signatory = config;
   return config;
+}
+
+export async function upsertCompanyProfile(
+  input: Omit<CompanyProfile, 'id'> & { id?: string }
+): Promise<CompanyProfile> {
+  const id = input.id || `comp-${crypto.randomUUID().slice(0, 8)}`;
+  const record: CompanyProfile = { ...input, id };
+  const { dataset } = await getDataset();
+  const engineer = dataset.signatory;
+  const supabase = getSupabaseServerClient();
+
+  if (supabase) {
+    await supabase.from('signatory_settings').upsert([
+      {
+        id: record.id,
+        company_name: record.companyName,
+        company_subtitle: record.companySubtitle,
+        engineer_name: engineer.engineerName,
+        engineer_title: engineer.engineerTitle,
+        engineer_crea: engineer.engineerCrea,
+        include_legal_representative: record.includeLegalRepresentative,
+        legal_rep_name: record.legalRepName,
+        legal_rep_role: record.legalRepRole,
+        legal_rep_cpf: record.legalRepCpf,
+      },
+      {
+        id: 'default',
+        company_name: record.companyName,
+        company_subtitle: record.companySubtitle,
+        engineer_name: engineer.engineerName,
+        engineer_title: engineer.engineerTitle,
+        engineer_crea: engineer.engineerCrea,
+        include_legal_representative: record.includeLegalRepresentative,
+        legal_rep_name: record.legalRepName,
+        legal_rep_role: record.legalRepRole,
+        legal_rep_cpf: record.legalRepCpf,
+      },
+    ]);
+  }
+
+  const mem = getMemoryDataset();
+  const idx = mem.companies.findIndex((c) => c.id === record.id);
+  if (idx >= 0) mem.companies[idx] = record;
+  else mem.companies.push(record);
+  mem.signatory = {
+    ...mem.signatory,
+    activeCompanyId: record.id,
+    companyName: record.companyName,
+    companySubtitle: record.companySubtitle,
+    includeLegalRepresentative: record.includeLegalRepresentative,
+    legalRepName: record.legalRepName,
+    legalRepRole: record.legalRepRole,
+    legalRepCpf: record.legalRepCpf,
+  };
+  return record;
+}
+
+export async function activateCompanyProfile(companyId: string): Promise<SignatoryConfig | null> {
+  const { dataset } = await getDataset();
+  const target = dataset.companies.find((c) => c.id === companyId);
+  if (!target) return null;
+
+  const updated: SignatoryConfig = {
+    ...dataset.signatory,
+    activeCompanyId: target.id,
+    companyName: target.companyName,
+    companySubtitle: target.companySubtitle,
+    includeLegalRepresentative: target.includeLegalRepresentative,
+    legalRepName: target.legalRepName,
+    legalRepRole: target.legalRepRole,
+    legalRepCpf: target.legalRepCpf,
+  };
+  return updateSignatorySettings(updated);
 }

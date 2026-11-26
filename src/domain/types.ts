@@ -236,7 +236,18 @@ export interface MeasurementCalculation {
   authenticityCode: string;
 }
 
+export interface CompanyProfile {
+  id: string;
+  companyName: string;
+  companySubtitle: string;
+  includeLegalRepresentative: boolean;
+  legalRepName: string;
+  legalRepRole: string;
+  legalRepCpf: string;
+}
+
 export interface SignatoryConfig {
+  activeCompanyId?: string;
   companyName: string;
   companySubtitle: string;
   engineerName: string;
@@ -288,4 +299,5 @@ export interface TeneurDataset {
   measurements: MeasurementRecord[];
   historicalSummaries: HistoricalMonthlySummary[];
   signatory: SignatoryConfig;
+  companies: CompanyProfile[];
 }

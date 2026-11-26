@@ -291,18 +291,40 @@ const styles = StyleSheet.create({
   },
 });
 
-function TerraSolMark() {
+function CompanyHeaderMark({ signatory }: { signatory: SignatoryConfig }) {
+  const isTerraSol = signatory.companyName.toLowerCase().includes('terra sol');
+  if (isTerraSol) {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <Svg width="108" height="30" viewBox="0 0 220 56">
+          <Polygon points="22,2 40,20 33,27 22,16 11,27 4,20" fill="#E6B800" />
+          <Polygon points="22,46 40,28 33,21 22,32 11,21 4,28" fill="#1E7B8C" />
+        </Svg>
+        <Text
+          style={{
+            fontSize: 12,
+            fontFamily: 'Helvetica-Bold',
+            color: '#1F6E7A',
+            marginTop: -22,
+            marginLeft: 32,
+          }}
+        >
+          Terra<Text style={{ color: '#C48829' }}>Sol</Text>
+        </Text>
+        <Text style={{ fontSize: 6.2, color: '#475569', marginLeft: 32, marginTop: 1 }}>
+          {signatory.companySubtitle}
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={{ alignItems: 'center' }}>
-      <Svg width="108" height="30" viewBox="0 0 220 56">
-        <Polygon points="22,2 40,20 33,27 22,16 11,27 4,20" fill="#E6B800" />
-        <Polygon points="22,46 40,28 33,21 22,32 11,21 4,28" fill="#1E7B8C" />
-      </Svg>
-      <Text style={{ fontSize: 12, fontFamily: 'Helvetica-Bold', color: '#1F6E7A', marginTop: -22, marginLeft: 32 }}>
-        Terra<Text style={{ color: '#C48829' }}>Sol</Text>
+      <Text style={{ fontSize: 11, fontFamily: 'Helvetica-Bold', color: '#1F6E7A' }}>
+        {signatory.companyName}
       </Text>
-      <Text style={{ fontSize: 6.2, color: '#475569', marginLeft: 32, marginTop: 1 }}>
-        engenharia geotécnica
+      <Text style={{ fontSize: 6.5, color: '#475569', marginTop: 2 }}>
+        {signatory.companySubtitle}
       </Text>
     </View>
   );
@@ -406,7 +428,7 @@ export function BoletimMedicaoPdf({
             </View>
           </View>
           <View style={styles.headerRight}>
-            <TerraSolMark />
+            <CompanyHeaderMark signatory={signatory} />
           </View>
         </View>
 
@@ -607,7 +629,7 @@ export function BoletimMedicaoPdf({
 
         <View style={styles.footer} fixed>
           <Text>
-            Terra Sol Engenharia Geotécnica · Boletim {monthLabel} · {calculation.team.name}
+            Teneur - Gestão de Serviços · {signatory.companyName} · Boletim {monthLabel} · {calculation.team.name}
           </Text>
           <Text>
             Gerado em {timestamp} · Cód. {calculation.authenticityCode} · Desenvolvido por Okapi Code Forge
