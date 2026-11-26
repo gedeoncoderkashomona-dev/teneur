@@ -289,59 +289,68 @@ function Step({
 
 function IphoneInstallDiagram() {
   return (
-    <Svg width="495" height="96" viewBox="0 0 495 96">
-      <Rect x="2" y="4" width="112" height="86" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
-      <Text x="14" y="22" style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
-        1. ABRIR NO SAFARI
+    <Svg width="495" height="114" viewBox="0 0 495 114">
+      {/* Passo A: Barra inferior do Safari */}
+      <Rect x="2" y="4" width="152" height="104" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
+      <Text x="14" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+        PASSO 1 E 2 · NO SAFARI
       </Text>
-      <Rect x="14" y="34" width="88" height="20" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
-      <Text x="20" y="47" style={{ fontSize: 7, fill: '#181B20' }}>
+      <Rect x="14" y="30" width="128" height="18" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
+      <Text x="32" y="41.5" style={{ fontSize: 7, fill: '#181B20' }}>
         teneur.vercel.app
       </Text>
-      <Text x="14" y="72" style={{ fontSize: 6.8, fill: '#525B68' }}>
-        Use sempre o Safari
+      {/* Barra inferior simulada do Safari */}
+      <Rect x="14" y="57" width="128" height="28" rx="6" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
+      <Text x="23" y="74" style={{ fontSize: 9, fill: '#94A3B8' }}>&lt;</Text>
+      <Text x="43" y="74" style={{ fontSize: 9, fill: '#94A3B8' }}>&gt;</Text>
+      {/* Destaque no botão Compartilhar */}
+      <Rect x="64" y="60" width="28" height="22" rx="5" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
+      <Path d="M78 76 V65 M74.5 68.5 L78 65 L81.5 68.5" stroke="#1F6E7A" strokeWidth="1.4" fill="none" />
+      <Rect x="73" y="71" width="10" height="7" rx="1.2" fill="none" stroke="#1F6E7A" strokeWidth="1.1" />
+      <Circle cx="108" cy="71" r="2.2" fill="#CBD5E1" />
+      <Rect x="122" y="67" width="10" height="8" rx="1.5" fill="none" stroke="#94A3B8" strokeWidth="1" />
+      <Text x="23" y="99" style={{ fontSize: 6.8, fill: '#525B68' }}>
+        Toque no ícone em destaque
       </Text>
 
-      <Path d="M119 47 H127" stroke="#1F6E7A" strokeWidth="1.2" />
+      {/* Seta 1 */}
+      <Path d="M159 56 H170 M166 52 L170 56 L166 60" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
 
-      <Rect x="131" y="4" width="112" height="86" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
-      <Text x="143" y="22" style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
-        2. COMPARTILHAR
+      {/* Passo B: Menu que sobe no iPhone */}
+      <Rect x="175" y="4" width="152" height="104" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
+      <Text x="187" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+        PASSO 3 · MENU DO IPHONE
       </Text>
-      <Rect x="172" y="35" width="28" height="24" rx="5" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1" />
-      <Path d="M186 50 V38 M182 42 L186 38 L190 42" stroke="#1F6E7A" strokeWidth="1.5" fill="none" />
-      <Text x="143" y="74" style={{ fontSize: 6.8, fill: '#525B68' }}>
-        Ícone na barra inferior
+      <Rect x="187" y="31" width="128" height="16" rx="4" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth="0.7" />
+      <Text x="195" y="41.5" style={{ fontSize: 6.8, fill: '#94A3B8' }}>Copiar link</Text>
+      <Rect x="187" y="51" width="128" height="26" rx="6" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
+      <Text x="195" y="62.5" style={{ fontSize: 7.3, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
+        Adicionar à Tela de Início
       </Text>
-
-      <Path d="M248 47 H256" stroke="#1F6E7A" strokeWidth="1.2" />
-
-      <Rect x="260" y="4" width="112" height="86" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
-      <Text x="271" y="22" style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
-        3. TELA DE INÍCIO
+      <Text x="195" y="72" style={{ fontSize: 6.5, fill: '#1F6E7A' }}>
+        Toque nesta opção (+)
       </Text>
-      <Rect x="272" y="34" width="88" height="24" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
-      <Text x="278" y="45" style={{ fontSize: 6.8, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
-        + Adicionar à Tela
-      </Text>
-      <Text x="285" y="54" style={{ fontSize: 6.8, fill: '#525B68' }}>
-        de Início
-      </Text>
-      <Text x="272" y="74" style={{ fontSize: 6.8, fill: '#525B68' }}>
-        Role o menu p/ baixo
+      <Text x="187" y="99" style={{ fontSize: 6.8, fill: '#525B68' }}>
+        Deslize o menu para cima se precisar
       </Text>
 
-      <Path d="M377 47 H385" stroke="#1F6E7A" strokeWidth="1.2" />
+      {/* Seta 2 */}
+      <Path d="M332 56 H343 M339 52 L343 56 L339 60" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
 
-      <Rect x="389" y="4" width="104" height="86" rx="10" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1" />
-      <Text x="401" y="22" style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
-        4. APP PRONTO
+      {/* Passo C: Ícone na Tela de Início */}
+      <Rect x="348" y="4" width="145" height="104" rx="10" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1" />
+      <Text x="360" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+        PASSO 4 · APP PRONTO!
       </Text>
-      <Rect x="425" y="31" width="32" height="32" rx="8" fill="#1F6E7A" />
-      <Path d="M433 41 H449 M441 41 V54" stroke="#FFFFFF" strokeWidth="2.1" strokeLinecap="round" />
-      <Circle cx="441" cy="36.5" r="1.7" fill="#E0A94B" />
-      <Text x="405" y="76" style={{ fontSize: 7, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
-        Ícone Teneur iOS
+      <Rect x="401" y="33" width="38" height="38" rx="10" fill="#1F6E7A" />
+      <Path d="M411 45 H429 M420 45 V61" stroke="#FFFFFF" strokeWidth="2.3" strokeLinecap="round" />
+      <Path d="M414 53 L420 59 L426 53" stroke="#E0A94B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <Circle cx="420" cy="40" r="1.9" fill="#E0A94B" />
+      <Text x="404" y="84" style={{ fontSize: 8, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
+        Teneur
+      </Text>
+      <Text x="365" y="98" style={{ fontSize: 6.8, fill: '#525B68' }}>
+        Abre em tela cheia como app
       </Text>
     </Svg>
   );
@@ -365,7 +374,7 @@ function TeneurManualDocument() {
                 GUIA OFICIAL DO USUÁRIO
               </Text>
               <Text style={{ fontSize: 8, color: COLORS.muted, marginTop: 2 }}>
-                Versão 1.0 · Celular (iPhone 14–18 / Android) & Notebook
+                Versão 1.0 · Celular (iPhone / Android) & Notebook
               </Text>
             </View>
           </View>
@@ -418,8 +427,8 @@ function TeneurManualDocument() {
                   O que você vai dominar
                 </Text>
                 <Text style={{ fontSize: 8.3, color: COLORS.ink, marginTop: 4, lineHeight: 1.5 }}>
-                  • App nativo no iPhone (14 ao 18) + Agenda{'\n'}
-                  • Diário de campo e regra Metro × Diária{'\n'}
+                  • App nativo no iPhone + Lembretes na Agenda{'\n'}
+                  • Diário de campo e regra Metro x Diária{'\n'}
                   • Boletins PDF, S10 Prata e Relatório NBR
                 </Text>
               </View>
@@ -453,7 +462,7 @@ function TeneurManualDocument() {
           <Step
             num="1"
             title="Visão Geral (Painel)"
-            text="Mostra os 4 indicadores do mês (Medição Bruta, Líquido a Pagar, Produção em metros/diárias e Taxa de Ocupação), 4 gráficos interativos ApexCharts, o botão para baixar o Relatório Executivo NBR em PDF e o Termômetro de Produção em tempo real de cada equipe."
+            text="Mostra os 4 indicadores do mês (Medição Bruta, Líquido a Pagar, Produção em metros/diárias e Taxa de Ocupação), 4 gráficos interativos, o botão para baixar o Relatório Executivo NBR em PDF e o Termômetro de Produção em tempo real de cada equipe."
           />
           <Step
             num="2"
@@ -512,13 +521,13 @@ function TeneurManualDocument() {
       <Page size="A4" style={s.page}>
         <PageChrome section="2. iPhone App Nativo, Notificações & Agenda" />
 
-        <Text style={s.kicker}>Capítulo 2 · Experiência iPhone (14 ao 18)</Text>
-        <Text style={s.h1}>Usar como App Nativo + Lembretes no Calendário</Text>
+        <Text style={s.kicker}>Capítulo 2 · Experiência no iPhone</Text>
+        <Text style={s.h1}>Colocando o Teneur na Tela Inicial do iPhone</Text>
         <Text style={s.lead}>
-          O Teneur foi projetado com responsividade dedicada para todos os iPhones atuais (do iPhone 14 ao 18, incluindo Dynamic Island e modelos Pro Max), sem zoom indesejado ao digitar e com instalação direta na Tela de Início.
+          Você pode salvar o Teneur direto na tela do seu iPhone para usá-lo igualzinho a um aplicativo baixado da App Store — em tela cheia, super rápido e sem precisar digitar o site toda vez.
         </Text>
 
-        <Text style={s.h2}>2.1 Como instalar o Teneur na Tela de Início do iPhone</Text>
+        <Text style={s.h2}>2.1 Passo a passo para instalar no iPhone (leva 20 segundos)</Text>
         <View style={[s.cardWhite, { padding: 10 }]}>
           <IphoneInstallDiagram />
         </View>
@@ -526,18 +535,23 @@ function TeneurManualDocument() {
         <View style={s.card}>
           <Step
             num="1"
-            title="Abra no Safari (importante)"
-            text="No iPhone, abra o navegador Safari e acesse https://teneur.vercel.app. (O Chrome no iOS não libera todas as funções nativas de tela cheia e notificações.)"
+            title="Abra o link usando o Safari"
+            text="No seu iPhone, abra o navegador Safari (o ícone da bússola azul) e digite https://teneur.vercel.app. Dica: faça sempre pelo Safari para liberar o modo aplicativo em tela cheia."
           />
           <Step
             num="2"
-            title="Toque em Compartilhar e depois em Adicionar à Tela de Início"
-            text="Toque no ícone de compartilhar na barra inferior do Safari (quadrado com seta para cima), role o menu e escolha “Adicionar à Tela de Início”."
+            title="Toque no botão Compartilhar (na barra lá embaixo)"
+            text="Na barra inferior do Safari, bem no meio, toque no quadradinho com uma seta apontando para cima."
           />
           <Step
             num="3"
-            title="Confirme e abra pelo novo ícone"
-            text="Toque em “Adicionar” no canto superior direito. O ícone verde-petróleo do Teneur aparecerá na sua tela inicial como um aplicativo da App Store, abrindo em tela cheia!"
+            title="Escolha “Adicionar à Tela de Início”"
+            text="Um menu vai subir de baixo para cima. Deslize esse menu com o dedo para cima e toque na opção “Adicionar à Tela de Início”."
+          />
+          <Step
+            num="4"
+            title="Toque em “Adicionar” e pronto!"
+            text="Confirme tocando em “Adicionar” no canto superior direito. O ícone verde-petróleo do Teneur vai aparecer na tela do seu iPhone junto com seus outros aplicativos!"
           />
         </View>
 
@@ -725,7 +739,7 @@ function TeneurManualDocument() {
         <PageChrome section="5. Painel Executivo & Relatório ABNT NBR" />
 
         <Text style={s.kicker}>Capítulo 5 · Apresentações de alto nível</Text>
-        <Text style={s.h1}>Gráficos ApexCharts e Relatório Executivo NBR</Text>
+        <Text style={s.h1}>Gráficos Interativos e Relatório Executivo NBR</Text>
         <Text style={s.lead}>
           Na aba Visão Geral, o Teneur transforma seus lançamentos diários em indicadores executivos prontos para reuniões de diretoria — com visual limpo e download direto em PDF seguindo diretrizes da ABNT NBR.
         </Text>
