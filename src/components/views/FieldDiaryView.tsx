@@ -53,41 +53,41 @@ const STATUS_META: Record<
     label: 'Em Obra',
     badgeBg: 'var(--status-meter-soft)',
     badgeColor: 'var(--status-meter)',
-    dotColor: '#1E7A56',
+    dotColor: 'var(--status-meter)',
   },
   mobilizacao: {
     label: 'Mobilização / Viagem',
     badgeBg: 'var(--status-daily-soft)',
     badgeColor: 'var(--status-daily)',
-    dotColor: '#1F6E7A',
+    dotColor: 'var(--status-daily)',
   },
   parado_diaria: {
     label: 'Parado c/ Diária',
     badgeBg: 'var(--status-standby-soft)',
     badgeColor: 'var(--status-standby)',
-    dotColor: '#B57415',
+    dotColor: 'var(--status-standby)',
   },
   em_casa: {
     label: 'Em Casa / Ocioso',
     badgeBg: 'var(--status-idle-soft)',
     badgeColor: 'var(--status-idle)',
-    dotColor: '#8B95A5',
+    dotColor: 'var(--status-idle)',
   },
   folga: {
     label: 'Domingo / Feriado',
-    badgeBg: 'rgba(148, 163, 184, 0.14)',
-    badgeColor: '#64748B',
-    dotColor: '#CBD5E1',
+    badgeBg: 'var(--surface-chip)',
+    badgeColor: 'var(--ink-muted)',
+    dotColor: 'var(--ink-muted)',
   },
   manutencao: {
     label: 'Manutenção',
     badgeBg: 'var(--status-danger-soft)',
     badgeColor: 'var(--status-danger)',
-    dotColor: '#B53D3D',
+    dotColor: 'var(--status-danger)',
   },
 };
 
-export function FieldDiaryView({
+export const FieldDiaryView = React.memo(function FieldDiaryView({
   teams,
   projects,
   entries,
@@ -264,10 +264,10 @@ export function FieldDiaryView({
     <div className="space-y-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-xs font-medium tracking-wider uppercase text-[#1F6E7A]">
+          <p className="text-xs font-medium tracking-wider uppercase text-[var(--accent-mineral)]">
             Diário de Campo · {formatMonthYearPT(referenceMonth)}
           </p>
-          <h1 className="mt-0.5 text-2xl font-light tracking-tight text-[#181B20]">
+          <h1 className="mt-0.5 text-2xl font-light tracking-tight text-[var(--ink-primary)]">
             Controle Diário das Equipes
           </h1>
         </div>
@@ -293,8 +293,8 @@ export function FieldDiaryView({
               onClick={() => onSelectTeamId(t.id)}
               className={`shrink-0 rounded-xl px-4 py-2 text-xs font-medium transition ${
                 active
-                  ? 'bg-[#1F6E7A] text-white shadow-sm'
-                  : 'glass-panel text-[#525B68] hover:text-[#181B20]'
+                  ? 'bg-[var(--accent-mineral)] text-white shadow-xs'
+                  : 'glass-panel text-[var(--ink-secondary)] hover:text-[var(--ink-primary)]'
               }`}
             >
               {t.name}
@@ -305,43 +305,43 @@ export function FieldDiaryView({
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-[11px] text-[#7C8594]">Metros Faturados</p>
-          <p className="tabular-nums mt-1 text-xl font-light text-[#181B20]">
+          <p className="text-[11px] text-[var(--ink-muted)]">Metros Faturados</p>
+          <p className="tabular-nums mt-1 text-xl font-light text-[var(--ink-primary)]">
             {formatDecimalBR(
               calculation.totals.sptMeters +
                 calculation.totals.tradoMeters +
                 calculation.totals.rotativaMeters
             )}{' '}
-            <span className="text-xs text-[#7C8594]">m</span>
+            <span className="text-xs text-[var(--ink-muted)]">m</span>
           </p>
         </div>
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-[11px] text-[#7C8594]">Diárias Acumuladas</p>
-          <p className="tabular-nums mt-1 text-xl font-light text-[#181B20]">
+          <p className="text-[11px] text-[var(--ink-muted)]">Diárias Acumuladas</p>
+          <p className="tabular-nums mt-1 text-xl font-light text-[var(--ink-primary)]">
             {formatDecimalBR(calculation.totals.dailyUnits)}{' '}
-            <span className="text-xs text-[#7C8594]">unid</span>
+            <span className="text-xs text-[var(--ink-muted)]">unid</span>
           </p>
         </div>
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-[11px] text-[#7C8594]">Mobilização</p>
-          <p className="tabular-nums mt-1 text-xl font-light text-[#181B20]">
+          <p className="text-[11px] text-[var(--ink-muted)]">Mobilização</p>
+          <p className="tabular-nums mt-1 text-xl font-light text-[var(--ink-primary)]">
             {formatDecimalBR(calculation.totals.mobilizationKm, 0)}{' '}
-            <span className="text-xs text-[#7C8594]">km</span>
+            <span className="text-xs text-[var(--ink-muted)]">km</span>
           </p>
         </div>
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-[11px] text-[#7C8594]">Bruto Parcial</p>
-          <p className="tabular-nums mt-1 text-xl font-medium text-[#1F6E7A]">
+          <p className="text-[11px] text-[var(--ink-muted)]">Bruto Parcial</p>
+          <p className="tabular-nums mt-1 text-xl font-medium text-[var(--accent-mineral)]">
             {formatCurrencyBRL(calculation.totals.grossSubtotal)}
           </p>
         </div>
         <div className="glass-panel col-span-2 rounded-2xl p-4 lg:col-span-1">
-          <p className="text-[11px] text-[#7C8594]">Cobertura do Mês</p>
-          <p className="tabular-nums mt-1 text-sm font-medium text-[#181B20]">
+          <p className="text-[11px] text-[var(--ink-muted)]">Cobertura do Mês</p>
+          <p className="tabular-nums mt-1 text-sm font-medium text-[var(--ink-primary)]">
             {calculation.totals.daysWithEntries} dias lançados
           </p>
           {calculation.totals.missingDaysCount > 0 && (
-            <p className="mt-0.5 inline-flex items-center gap-1 text-[11px] text-[#B57415]">
+            <p className="mt-0.5 inline-flex items-center gap-1 text-[11px] text-[var(--accent-ochre)]">
               <AlertCircle className="h-3 w-3" />
               {calculation.totals.missingDaysCount} sem registro
             </p>
@@ -352,23 +352,23 @@ export function FieldDiaryView({
       <section className="glass-panel rounded-2xl p-5">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-[#1F6E7A]" strokeWidth={1.6} />
-            <h2 className="text-sm font-medium text-[#181B20]">
-              Mapa Mensal — {team.name} (clique em qualquer dia para apontar)
+            <CalendarDays className="h-4 w-4 text-[var(--accent-mineral)]" strokeWidth={1.6} />
+            <h2 className="text-sm font-medium text-[var(--ink-primary)]">
+              Mapa Mensal — {team.name} (toque em qualquer dia para apontar)
             </h2>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-[11px] text-[#525B68]">
+          <div className="flex flex-wrap items-center gap-3 text-[11px] text-[var(--ink-secondary)]">
             <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#1E7A56]" /> Metro
+              <span className="h-2 w-2 rounded-full bg-[var(--status-meter)]" /> Metro
             </span>
             <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#1F6E7A]" /> Diária
+              <span className="h-2 w-2 rounded-full bg-[var(--status-daily)]" /> Diária
             </span>
             <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#B57415]" /> Parado
+              <span className="h-2 w-2 rounded-full bg-[var(--status-standby)]" /> Parado
             </span>
             <span className="inline-flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#8B95A5]" /> Em Casa
+              <span className="h-2 w-2 rounded-full bg-[var(--status-idle)]" /> Em Casa
             </span>
           </div>
         </div>
@@ -378,11 +378,11 @@ export function FieldDiaryView({
             const dotColor = !evaluated
               ? 'transparent'
               : evaluated.resolvedMode === 'metro'
-                ? '#1E7A56'
+                ? 'var(--status-meter)'
                 : evaluated.resolvedMode === 'diaria' || evaluated.resolvedMode === 'meia_diaria'
                   ? evaluated.entry.status === 'parado_diaria'
-                    ? '#B57415'
-                    : '#1F6E7A'
+                    ? 'var(--status-standby)'
+                    : 'var(--status-daily)'
                   : STATUS_META[evaluated.entry.status].dotColor;
 
             return (
@@ -392,25 +392,22 @@ export function FieldDiaryView({
                 onClick={() => openDrawerForDate(dateStr)}
                 className={`flex min-h-[72px] flex-col justify-between rounded-xl border p-2 text-left transition ${
                   evaluated
-                    ? 'border-[#181B20]/10 bg-white/85 hover:border-[#1F6E7A]/45'
-                    : 'border-dashed border-[#181B20]/12 bg-white/35 hover:bg-white/70'
+                    ? 'surface-card-inner hover:border-[var(--accent-mineral)]'
+                    : 'border-dashed border-[var(--border-strong)] bg-[var(--surface-hover)] hover:bg-[var(--surface-inner)]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="tabular-nums text-xs font-medium text-[#181B20]">
+                  <span className="tabular-nums text-xs font-medium text-[var(--ink-primary)]">
                     {String(dayNum).padStart(2, '0')}
                   </span>
                   {evaluated && (
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: dotColor }}
-                    />
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: dotColor }} />
                   )}
                 </div>
 
                 {evaluated ? (
                   <div className="mt-1 space-y-0.5">
-                    <p className="truncate text-[10px] font-medium text-[#181B20]">
+                    <p className="truncate text-[10px] font-medium text-[var(--ink-primary)]">
                       {evaluated.resolvedMode === 'metro'
                         ? `${formatDecimalBR(evaluated.totalMeters)} m`
                         : evaluated.resolvedMode === 'diaria'
@@ -419,12 +416,12 @@ export function FieldDiaryView({
                             ? '0,5 Diária'
                             : STATUS_META[evaluated.entry.status].label}
                     </p>
-                    <p className="tabular-nums text-[10px] text-[#7C8594]">
+                    <p className="tabular-nums text-[10px] text-[var(--ink-muted)]">
                       {evaluated.billedValue > 0 ? formatCurrencyBRL(evaluated.billedValue) : '—'}
                     </p>
                   </div>
                 ) : (
-                  <span className="text-[10px] text-[#9CA3AF]">Sem registro</span>
+                  <span className="text-[10px] text-[var(--ink-muted)]">Sem registro</span>
                 )}
               </button>
             );
@@ -433,16 +430,16 @@ export function FieldDiaryView({
       </section>
 
       <section className="glass-panel rounded-2xl p-5">
-        <h2 className="mb-3 text-sm font-medium text-[#181B20]">
+        <h2 className="mb-3 text-sm font-medium text-[var(--ink-primary)]">
           Lançamentos Cronológicos — {team.name}
         </h2>
         {calculation.evaluatedDays.length === 0 ? (
-          <p className="py-6 text-center text-sm text-[#7C8594]">
-            Nenhum apontamento registrado neste mês para {team.name}. Clique em um dia acima ou em
+          <p className="py-6 text-center text-sm text-[var(--ink-muted)]">
+            Nenhum apontamento registrado neste mês para {team.name}. Toque em um dia acima ou em
             &ldquo;Apontar Dia&rdquo;.
           </p>
         ) : (
-          <div className="divide-y divide-[#181B20]/7">
+          <div className="divide-y divide-[var(--border-hairline)]">
             {calculation.evaluatedDays.map((item) => {
               const proj = item.entry.projectId ? projectMap.get(item.entry.projectId) : null;
               const meta = STATUS_META[item.entry.status];
@@ -453,7 +450,7 @@ export function FieldDiaryView({
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="tabular-nums text-xs font-semibold text-[#181B20]">
+                      <span className="tabular-nums text-xs font-semibold text-[var(--ink-primary)]">
                         {formatDateBR(item.entry.date)}
                       </span>
                       <span
@@ -463,27 +460,30 @@ export function FieldDiaryView({
                         {meta.label}
                       </span>
                       {item.triggeredMinimumDaily && (
-                        <span className="rounded-full bg-[#C48829]/12 px-2 py-0.5 text-[10px] font-medium text-[#B57415]">
+                        <span className="rounded-full bg-[var(--accent-ochre-soft)] px-2 py-0.5 text-[10px] font-medium text-[var(--accent-ochre)]">
                           Auto → Diária Mínima
                         </span>
                       )}
                       {item.entry.usesSptEquipment && (
-                        <span className="rounded-full bg-[#1F6E7A]/10 px-2 py-0.5 text-[10px] font-medium text-[#1F6E7A]">
+                        <span className="rounded-full bg-[var(--accent-mineral-soft)] px-2 py-0.5 text-[10px] font-medium text-[var(--accent-mineral)]">
                           Equip. SPT
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-[#181B20]">
+                    <p className="mt-1 text-xs text-[var(--ink-primary)]">
                       {proj
                         ? `${proj.pastaCode} · ${proj.clientName} (${proj.city}/${proj.state})`
                         : 'Sem obra vinculada'}
                       {item.entry.testDescription ? ` — ${item.entry.testDescription}` : ''}
                     </p>
                     {item.entry.holes.length > 0 && (
-                      <p className="tabular-nums mt-0.5 text-[11px] text-[#525B68]">
+                      <p className="tabular-nums mt-0.5 text-[11px] text-[var(--ink-secondary)]">
                         Furos:{' '}
                         {item.entry.holes
-                          .map((h) => `${h.code} (${formatDecimalBR(h.depthMeters)} m ${h.type.toUpperCase()})`)
+                          .map(
+                            (h) =>
+                              `${h.code} (${formatDecimalBR(h.depthMeters)} m ${h.type.toUpperCase()})`
+                          )
                           .join(' · ')}
                       </p>
                     )}
@@ -491,10 +491,10 @@ export function FieldDiaryView({
 
                   <div className="flex items-center justify-between gap-3 sm:justify-end">
                     <div className="text-right">
-                      <p className="tabular-nums text-sm font-semibold text-[#181B20]">
+                      <p className="tabular-nums text-sm font-semibold text-[var(--ink-primary)]">
                         {formatCurrencyBRL(item.billedValue)}
                       </p>
-                      <p className="text-[11px] text-[#7C8594]">
+                      <p className="text-[11px] text-[var(--ink-muted)]">
                         {item.resolvedMode === 'metro'
                           ? `${formatDecimalBR(item.totalMeters)} m`
                           : item.resolvedMode === 'diaria'
@@ -520,21 +520,21 @@ export function FieldDiaryView({
       </section>
 
       {drawerOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#181B20]/35 backdrop-blur-xs sm:items-center sm:p-4">
-          <div className="max-h-[92dvh] w-full max-w-xl overflow-y-auto rounded-t-3xl bg-[#F8F9FA] p-5 shadow-2xl sm:rounded-3xl">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/45 backdrop-blur-sm sm:items-center sm:p-4">
+          <div className="glass-modal max-h-[92dvh] w-full max-w-xl overflow-y-auto rounded-t-3xl p-5 sm:rounded-3xl">
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-wider text-[#1F6E7A]">
+                <p className="text-[11px] font-medium uppercase tracking-wider text-[var(--accent-mineral)]">
                   Equipe {team.name}
                 </p>
-                <h3 className="text-lg font-medium text-[#181B20]">
+                <h3 className="text-lg font-medium text-[var(--ink-primary)]">
                   {editingId ? 'Editar Apontamento Diário' : 'Novo Apontamento de Campo'}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="rounded-full p-2 text-[#525B68] hover:bg-black/5"
+                className="rounded-full p-2 text-[var(--ink-secondary)] hover:bg-[var(--surface-hover)]"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -543,7 +543,9 @@ export function FieldDiaryView({
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-[#525B68]">Data</label>
+                  <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
+                    Data
+                  </label>
                   <input
                     type="date"
                     required
@@ -553,7 +555,9 @@ export function FieldDiaryView({
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-[#525B68]">Status do Dia</label>
+                  <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
+                    Status do Dia
+                  </label>
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as FieldDayStatus)}
@@ -570,7 +574,9 @@ export function FieldDiaryView({
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-[#525B68]">Pasta / Obra</label>
+                  <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
+                    Pasta / Obra
+                  </label>
                   <select
                     value={projectId}
                     onChange={(e) => setProjectId(e.target.value)}
@@ -585,7 +591,9 @@ export function FieldDiaryView({
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-[#525B68]">Atividade</label>
+                  <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
+                    Atividade
+                  </label>
                   <select
                     value={activityType}
                     onChange={(e) => setActivityType(e.target.value as FieldActivityType)}
@@ -604,8 +612,8 @@ export function FieldDiaryView({
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[#181B20]/10 bg-white p-3.5">
-                <p className="mb-2 text-xs font-medium text-[#181B20]">
+              <div className="surface-card-inner rounded-2xl p-3.5">
+                <p className="mb-2 text-xs font-medium text-[var(--ink-primary)]">
                   Furos Perfurados no Dia (opcional para ensaios)
                 </p>
                 <div className="grid grid-cols-12 gap-2">
@@ -619,7 +627,7 @@ export function FieldDiaryView({
                   <select
                     value={newHoleType}
                     onChange={(e) => setNewHoleType(e.target.value as BoreholeType)}
-                    className="mineral-input col-span-3 px-2 py-1.5 text-xs"
+                    className="mineral-input col-span-3 px-2.5 py-1.5 text-xs"
                   >
                     <option value="spt">SPT</option>
                     <option value="trado">Trado</option>
@@ -647,15 +655,17 @@ export function FieldDiaryView({
                     {holes.map((h) => (
                       <div
                         key={h.id}
-                        className="flex items-center justify-between rounded-xl bg-[#F3F4F6] px-3 py-1.5 text-xs"
+                        className="flex items-center justify-between rounded-xl bg-[var(--surface-chip)] px-3 py-1.5 text-xs"
                       >
-                        <span className="tabular-nums font-medium text-[#181B20]">
+                        <span className="tabular-nums font-medium text-[var(--ink-primary)]">
                           {h.code} · {h.type.toUpperCase()} · {formatDecimalBR(h.depthMeters)} m
                         </span>
                         <button
                           type="button"
-                          onClick={() => setHoles((prev) => prev.filter((item) => item.id !== h.id))}
-                          className="text-[#B53D3D] hover:opacity-75"
+                          onClick={() =>
+                            setHoles((prev) => prev.filter((item) => item.id !== h.id))
+                          }
+                          className="text-[var(--status-danger)] hover:opacity-75"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
                         </button>
@@ -666,7 +676,7 @@ export function FieldDiaryView({
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium text-[#525B68]">
+                <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
                   Descrição do Ensaio / Ocorrência
                 </label>
                 <input
@@ -680,7 +690,7 @@ export function FieldDiaryView({
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-[#525B68]">
+                  <label className="mb-1 block text-xs font-medium text-[var(--ink-secondary)]">
                     Regra de Faturamento
                   </label>
                   <select
@@ -696,28 +706,30 @@ export function FieldDiaryView({
                   </select>
                 </div>
 
-                <label className="flex cursor-pointer items-center gap-2.5 self-end rounded-xl border border-[#181B20]/10 bg-white px-3 py-2.5 text-xs text-[#181B20]">
+                <label className="surface-card-inner flex cursor-pointer items-center gap-2.5 self-end rounded-xl px-3 py-2.5 text-xs text-[var(--ink-primary)]">
                   <input
                     type="checkbox"
                     checked={usesSptEquipment}
                     onChange={(e) => setUsesSptEquipment(e.target.checked)}
-                    className="h-4 w-4 rounded accent-[#1F6E7A]"
+                    className="h-4 w-4 rounded accent-[var(--accent-mineral)]"
                   />
                   <span>Usou equipamento SPT ({team.percentualDescontoEquipSpt}%)</span>
                 </label>
               </div>
 
-              <div className="rounded-2xl border border-[#1F6E7A]/20 bg-[#1F6E7A]/[0.06] p-3.5">
+              <div className="rounded-2xl border border-[var(--accent-mineral)]/25 bg-[var(--accent-mineral-soft)] p-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#1F6E7A]">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--accent-mineral)]">
                     <CheckCircle2 className="h-4 w-4" />
                     Prévia Automática do Motor Teneur
                   </span>
-                  <span className="tabular-nums text-sm font-semibold text-[#181B20]">
+                  <span className="tabular-nums text-sm font-semibold text-[var(--ink-primary)]">
                     {formatCurrencyBRL(livePreview.billedValue)}
                   </span>
                 </div>
-                <p className="mt-1 text-[11px] text-[#525B68]">{livePreview.explanation}</p>
+                <p className="mt-1 text-[11px] text-[var(--ink-secondary)]">
+                  {livePreview.explanation}
+                </p>
               </div>
 
               <div className="flex items-center justify-between gap-2 pt-2">
@@ -728,7 +740,7 @@ export function FieldDiaryView({
                       await onDeleteEntry(editingId);
                       setDrawerOpen(false);
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium text-[#B53D3D] hover:bg-[#B53D3D]/10"
+                    className="inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium text-[var(--status-danger)] hover:bg-[var(--status-danger-soft)]"
                   >
                     <Trash2 className="h-4 w-4" />
                     Excluir
@@ -761,4 +773,4 @@ export function FieldDiaryView({
       )}
     </div>
   );
-}
+});

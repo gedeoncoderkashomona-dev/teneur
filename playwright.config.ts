@@ -3,10 +3,12 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: false,
+  workers: 2,
   retries: 0,
+  timeout: 45000,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:3010',
+    baseURL: 'http://127.0.0.1:3011',
     channel: 'chrome',
     trace: 'on-first-retry',
   },
@@ -44,9 +46,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run start -- -p 3010',
-    url: 'http://127.0.0.1:3010',
-    reuseExistingServer: true,
+    command: 'npm run start -- -p 3011',
+    url: 'http://127.0.0.1:3011',
+    reuseExistingServer: false,
     timeout: 60000,
   },
 });

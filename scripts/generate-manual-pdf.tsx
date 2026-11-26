@@ -503,9 +503,9 @@ function TeneurManualDocument() {
         </View>
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Sininho (Lembretes & Agenda)</Text>
+            <Text style={s.stepTitle}>Sininho & Modo Noturno (Lua / Sol)</Text>
             <Text style={s.stepText}>
-              Habilita notificações diretas no celular e exporta lembretes recorrentes direto para o Calendário do iPhone / Google Agenda.
+              O sininho ativa notificações e lembretes no Calendário; o ícone de Lua/Sol alterna instantaneamente entre o Modo Claro e o Modo Noturno em vidro fosco.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>

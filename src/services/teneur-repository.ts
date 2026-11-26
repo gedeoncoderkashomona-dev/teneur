@@ -512,19 +512,27 @@ export async function upsertCompanyProfile(
 ): Promise<CompanyProfile> {
   const id = input.id || `comp-${crypto.randomUUID().slice(0, 8)}`;
   const record: CompanyProfile = { ...input, id };
-  const { dataset } = await getDataset();
-  const engineer = dataset.signatory;
   const supabase = getSupabaseServerClient();
 
   if (supabase) {
+    const { data: currentDefault } = await supabase
+      .from('signatory_settings')
+      .select('engineer_name, engineer_title, engineer_crea')
+      .eq('id', 'default')
+      .maybeSingle();
+
+    const engineerName = currentDefault?.engineer_name ?? TERRA_SOL_SEED.signatory.engineerName;
+    const engineerTitle = currentDefault?.engineer_title ?? TERRA_SOL_SEED.signatory.engineerTitle;
+    const engineerCrea = currentDefault?.engineer_crea ?? TERRA_SOL_SEED.signatory.engineerCrea;
+
     await supabase.from('signatory_settings').upsert([
       {
         id: record.id,
         company_name: record.companyName,
         company_subtitle: record.companySubtitle,
-        engineer_name: engineer.engineerName,
-        engineer_title: engineer.engineerTitle,
-        engineer_crea: engineer.engineerCrea,
+        engineer_name: engineerName,
+        engineer_title: engineerTitle,
+        engineer_crea: engineerCrea,
         include_legal_representative: record.includeLegalRepresentative,
         legal_rep_name: record.legalRepName,
         legal_rep_role: record.legalRepRole,
@@ -534,9 +542,9 @@ export async function upsertCompanyProfile(
         id: 'default',
         company_name: record.companyName,
         company_subtitle: record.companySubtitle,
-        engineer_name: engineer.engineerName,
-        engineer_title: engineer.engineerTitle,
-        engineer_crea: engineer.engineerCrea,
+        engineer_name: engineerName,
+        engineer_title: engineerTitle,
+        engineer_crea: engineerCrea,
         include_legal_representative: record.includeLegalRepresentative,
         legal_rep_name: record.legalRepName,
         legal_rep_role: record.legalRepRole,
@@ -563,12 +571,42 @@ export async function upsertCompanyProfile(
 }
 
 export async function activateCompanyProfile(companyId: string): Promise<SignatoryConfig | null> {
-  const { dataset } = await getDataset();
-  const target = dataset.companies.find((c) => c.id === companyId);
+  const supabase = getSupabaseServerClient();
+
+  if (supabase) {
+    const { data: rows } = await supabase
+      .from('signatory_settings')
+      .select('*')
+      .in('id', ['default', companyId]);
+
+    const defaultRow = rows?.find((r) => r.id === 'default');
+    const targetRow = rows?.find((r) => r.id === companyId);
+    const seedFallback = TERRA_SOL_SEED.companies.find((c) => c.id === companyId);
+    if (!targetRow && !seedFallback) return null;
+
+    const updated: SignatoryConfig = {
+      activeCompanyId: companyId,
+      companyName: targetRow?.company_name ?? seedFallback!.companyName,
+      companySubtitle: targetRow?.company_subtitle ?? seedFallback!.companySubtitle,
+      engineerName: defaultRow?.engineer_name ?? TERRA_SOL_SEED.signatory.engineerName,
+      engineerTitle: defaultRow?.engineer_title ?? TERRA_SOL_SEED.signatory.engineerTitle,
+      engineerCrea: defaultRow?.engineer_crea ?? TERRA_SOL_SEED.signatory.engineerCrea,
+      includeLegalRepresentative: targetRow
+        ? Boolean(targetRow.include_legal_representative)
+        : seedFallback!.includeLegalRepresentative,
+      legalRepName: targetRow?.legal_rep_name ?? seedFallback!.legalRepName,
+      legalRepRole: targetRow?.legal_rep_role ?? seedFallback!.legalRepRole,
+      legalRepCpf: targetRow?.legal_rep_cpf ?? seedFallback!.legalRepCpf,
+    };
+    return updateSignatorySettings(updated);
+  }
+
+  const mem = getMemoryDataset();
+  const target = mem.companies.find((c) => c.id === companyId);
   if (!target) return null;
 
   const updated: SignatoryConfig = {
-    ...dataset.signatory,
+    ...mem.signatory,
     activeCompanyId: target.id,
     companyName: target.companyName,
     companySubtitle: target.companySubtitle,

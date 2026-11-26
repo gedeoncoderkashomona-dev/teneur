@@ -13,10 +13,9 @@ interface CompanySwitcherProps {
   onCreateCompany: (company: Omit<CompanyProfile, 'id'>) => Promise<void>;
 }
 
-export function CompanySwitcher({
+export const CompanySwitcher = React.memo(function CompanySwitcher({
   companies,
   activeCompanyName,
-  activeCompanySubtitle,
   compact = false,
   onSelectCompany,
   onCreateCompany,
@@ -75,13 +74,13 @@ export function CompanySwitcher({
         onClick={() => setOpen((v) => !v)}
         className={
           compact
-            ? 'inline-flex max-w-[148px] items-center gap-1 rounded-lg bg-[#181B20]/[0.045] px-2 py-0.5 text-[10px] font-medium text-[#525B68] transition hover:bg-[#181B20]/[0.08] hover:text-[#181B20]'
-            : 'mt-0.5 inline-flex max-w-full items-center gap-1 rounded-lg px-1.5 py-0.5 -ml-1.5 text-[11px] text-[#525B68] transition hover:bg-[#181B20]/[0.05] hover:text-[#181B20]'
+            ? 'inline-flex max-w-[144px] items-center gap-1 rounded-lg bg-[var(--surface-chip)] px-2 py-0.5 text-[10px] font-medium text-[var(--ink-secondary)] transition hover:text-[var(--ink-primary)]'
+            : 'mt-0.5 -ml-1.5 inline-flex max-w-full items-center gap-1 rounded-lg px-1.5 py-0.5 text-[11px] text-[var(--ink-secondary)] transition hover:bg-[var(--surface-hover)] hover:text-[var(--ink-primary)]'
         }
       >
         <span className="truncate">{activeCompanyName}</span>
         <ChevronDown
-          className={`h-3 w-3 shrink-0 text-[#7C8594] transition-transform duration-200 ${
+          className={`h-3 w-3 shrink-0 text-[var(--ink-muted)] transition-transform duration-200 ${
             open ? 'rotate-180' : ''
           }`}
           strokeWidth={1.7}
@@ -89,16 +88,16 @@ export function CompanySwitcher({
       </button>
 
       {open && (
-        <div className="glass-panel absolute left-0 top-full z-50 mt-2 w-72 rounded-2xl bg-white/95 p-2.5 shadow-[0_18px_40px_-16px_rgba(15,23,42,0.18)]">
+        <div className="glass-popover absolute left-0 top-full z-50 mt-2 w-72 rounded-2xl p-2.5">
           <div className="mb-1.5 flex items-center justify-between px-2 pt-0.5">
-            <span className="text-[10px] font-medium uppercase tracking-wider text-[#7C8594]">
+            <span className="text-[10px] font-medium uppercase tracking-wider text-[var(--ink-muted)]">
               Empresa / Contrato Ativo
             </span>
             {adding && (
               <button
                 type="button"
                 onClick={() => setAdding(false)}
-                className="rounded-md p-0.5 text-[#7C8594] hover:bg-black/5"
+                className="rounded-md p-0.5 text-[var(--ink-muted)] hover:bg-[var(--surface-hover)]"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
@@ -116,28 +115,28 @@ export function CompanySwitcher({
                       key={company.id}
                       type="button"
                       onClick={async () => {
-                        await onSelectCompany(company.id);
                         setOpen(false);
+                        await onSelectCompany(company.id);
                       }}
                       className={`flex w-full items-center justify-between gap-2 rounded-xl px-2.5 py-2 text-left transition ${
                         isActive
-                          ? 'bg-[#1F6E7A]/10 text-[#1F6E7A]'
-                          : 'text-[#181B20] hover:bg-black/[0.04]'
+                          ? 'bg-[var(--accent-mineral-soft)] text-[var(--accent-mineral)]'
+                          : 'text-[var(--ink-primary)] hover:bg-[var(--surface-hover)]'
                       }`}
                     >
                       <div className="flex min-w-0 items-center gap-2">
                         <div
                           className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
                             isActive
-                              ? 'bg-[#1F6E7A] text-white'
-                              : 'bg-[#F3F4F6] text-[#525B68]'
+                              ? 'bg-[var(--accent-mineral)] text-white'
+                              : 'bg-[var(--surface-chip)] text-[var(--ink-secondary)]'
                           }`}
                         >
                           <Building2 className="h-3.5 w-3.5" strokeWidth={1.6} />
                         </div>
                         <div className="min-w-0">
                           <p className="truncate text-xs font-medium">{company.companyName}</p>
-                          <p className="truncate text-[10px] text-[#7C8594]">
+                          <p className="truncate text-[10px] text-[var(--ink-muted)]">
                             {company.companySubtitle}
                           </p>
                         </div>
@@ -148,12 +147,12 @@ export function CompanySwitcher({
                 })}
               </div>
 
-              <div className="mt-2 border-t border-[#181B20]/8 pt-2">
+              <div className="mt-2 border-t border-[var(--border-hairline)] pt-2">
                 <button
                   type="button"
                   data-testid="add-company-btn"
                   onClick={() => setAdding(true)}
-                  className="flex w-full items-center gap-2 rounded-xl px-2.5 py-2 text-xs font-medium text-[#1F6E7A] transition hover:bg-[#1F6E7A]/8"
+                  className="flex w-full items-center gap-2 rounded-xl px-2.5 py-2 text-xs font-medium text-[var(--accent-mineral)] transition hover:bg-[var(--accent-mineral-soft)]"
                 >
                   <Plus className="h-3.5 w-3.5" strokeWidth={1.8} />
                   <span>Adicionar outra empresa</span>
@@ -213,4 +212,4 @@ export function CompanySwitcher({
       )}
     </div>
   );
-}
+});

@@ -7,8 +7,8 @@ import {
   Download,
   FileCheck2,
   Plus,
-  Route,
   Receipt,
+  Route,
   Trash2,
   Truck,
 } from 'lucide-react';
@@ -59,7 +59,7 @@ const STATUS_FLOW: Array<{ key: MeasurementStatus; label: string }> = [
   { key: 'paga', label: 'Paga' },
 ];
 
-export function MeasurementsView({
+export const MeasurementsView = React.memo(function MeasurementsView({
   teams,
   projects,
   entries,
@@ -155,7 +155,9 @@ export function MeasurementsView({
       paidInAdvance: mobPaidInAdvance,
       advanceAmount: adv,
       advanceDate: mobPaidInAdvance ? mobDate : null,
-      advanceNotes: mobPaidInAdvance ? `Mobilização paga antecipadamente (${mobOrigin} → ${mobDestination})` : null,
+      advanceNotes: mobPaidInAdvance
+        ? `Mobilização paga antecipadamente (${mobOrigin} → ${mobDestination})`
+        : null,
     });
     setMobDestination('');
     setMobKm('');
@@ -190,7 +192,7 @@ export function MeasurementsView({
 
   async function handleCopyWhatsApp() {
     const lines = [
-      `*Terra Sol Engenharia Geotécnica — Boletim de Medição*`,
+      `*Teneur — Boletim de Medição*`,
       `Equipe: *${team.name}* | Referência: *${formatMonthYearPT(referenceMonth)}*`,
       ``,
       `• Mobilização: ${formatDecimalBR(calculation.totals.mobilizationKm)} km (${formatCurrencyBRL(calculation.totals.mobilizationValue)})`,
@@ -222,21 +224,21 @@ export function MeasurementsView({
     <div className="space-y-5">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-[#1F6E7A]">
+          <p className="text-xs font-medium uppercase tracking-wider text-[var(--accent-mineral)]">
             Fechamento Mensal · {formatMonthYearPT(referenceMonth)}
           </p>
-          <h1 className="mt-0.5 text-2xl font-light tracking-tight text-[#181B20]">
+          <h1 className="mt-0.5 text-2xl font-light tracking-tight text-[var(--ink-primary)]">
             Boletim de Medição & Memória de Cálculo
           </h1>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <label className="glass-panel inline-flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-xs text-[#525B68]">
+          <label className="glass-panel inline-flex cursor-pointer items-center gap-2 rounded-xl px-3 py-2 text-xs text-[var(--ink-secondary)]">
             <input
               type="checkbox"
               checked={includeLegalRep}
               onChange={(e) => onToggleLegalRep(e.target.checked)}
-              className="h-3.5 w-3.5 rounded accent-[#1F6E7A]"
+              className="h-3.5 w-3.5 rounded accent-[var(--accent-mineral)]"
             />
             <span>Assinatura Eng. Damiana</span>
           </label>
@@ -247,7 +249,7 @@ export function MeasurementsView({
             className="btn-secondary inline-flex items-center gap-1.5 px-3.5 py-2 text-xs"
           >
             {copiedWhatsApp ? (
-              <Check className="h-3.5 w-3.5 text-[#1E7A56]" />
+              <Check className="h-3.5 w-3.5 text-[var(--status-meter)]" />
             ) : (
               <Copy className="h-3.5 w-3.5" />
             )}
@@ -278,8 +280,8 @@ export function MeasurementsView({
                 onClick={() => onSelectTeamId(t.id)}
                 className={`shrink-0 rounded-xl px-4 py-2 text-xs font-medium transition ${
                   active
-                    ? 'bg-[#1F6E7A] text-white shadow-sm'
-                    : 'glass-panel text-[#525B68] hover:text-[#181B20]'
+                    ? 'bg-[var(--accent-mineral)] text-white shadow-xs'
+                    : 'glass-panel text-[var(--ink-secondary)] hover:text-[var(--ink-primary)]'
                 }`}
               >
                 {t.name}
@@ -298,8 +300,8 @@ export function MeasurementsView({
                 onClick={() => onUpdateStatus(step.key)}
                 className={`rounded-lg px-2.5 py-1 text-[11px] font-medium transition ${
                   active
-                    ? 'bg-[#1F6E7A] text-white'
-                    : 'text-[#525B68] hover:bg-black/5 hover:text-[#181B20]'
+                    ? 'bg-[var(--accent-mineral)] text-white'
+                    : 'text-[var(--ink-secondary)] hover:bg-[var(--surface-hover)] hover:text-[var(--ink-primary)]'
                 }`}
               >
                 {step.label}
@@ -311,54 +313,54 @@ export function MeasurementsView({
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-xs text-[#7C8594]">Subtotal Bruto dos Serviços</p>
-          <p className="tabular-nums mt-1.5 text-2xl font-light text-[#181B20]">
+          <p className="text-xs text-[var(--ink-muted)]">Subtotal Bruto dos Serviços</p>
+          <p className="tabular-nums mt-1.5 text-2xl font-light text-[var(--ink-primary)]">
             {formatCurrencyBRL(calculation.totals.grossSubtotal)}
           </p>
-          <p className="mt-1 text-[11px] text-[#7C8594]">
+          <p className="mt-1 text-[11px] text-[var(--ink-muted)]">
             Período: {calculation.periodStart} a {calculation.periodEnd}
           </p>
         </div>
 
         <div className="glass-panel rounded-2xl p-4">
-          <p className="text-xs text-[#7C8594]">Pagamentos, Descontos & Reembolsos</p>
-          <p className="tabular-nums mt-1.5 text-2xl font-light text-[#181B20]">
+          <p className="text-xs text-[var(--ink-muted)]">Pagamentos, Descontos & Reembolsos</p>
+          <p className="tabular-nums mt-1.5 text-2xl font-light text-[var(--ink-primary)]">
             {formatCurrencyBRL(calculation.totals.netPaymentsSubtotal)}
           </p>
-          <p className="tabular-nums mt-1 text-[11px] text-[#1E7A56]">
+          <p className="tabular-nums mt-1 text-[11px] text-[var(--status-meter)]">
             Reembolsos somados: {formatCurrencyBRL(calculation.totals.reimbursementsTotal)}
           </p>
         </div>
 
-        <div className="rounded-2xl border border-[#1F6E7A]/25 bg-[#1F6E7A]/[0.08] p-4">
-          <p className="text-xs font-medium text-[#1F6E7A]">SALDO LÍQUIDO A PAGAR</p>
+        <div className="glass-panel rounded-2xl border-[var(--accent-mineral)]/35 bg-[var(--accent-mineral-soft)] p-4">
+          <p className="text-xs font-medium text-[var(--accent-mineral)]">SALDO LÍQUIDO A PAGAR</p>
           <p
             data-testid="net-payable-value"
-            className="tabular-nums mt-1.5 text-2xl font-semibold text-[#181B20]"
+            className="tabular-nums mt-1.5 text-2xl font-semibold text-[var(--ink-primary)]"
           >
             {formatCurrencyBRL(calculation.totals.netPayable)}
           </p>
-          <p className="mt-1 text-[11px] text-[#525B68]">
+          <p className="mt-1 text-[11px] text-[var(--ink-secondary)]">
             Código: {calculation.authenticityCode}
           </p>
         </div>
       </div>
 
       <section className="glass-panel overflow-hidden rounded-2xl">
-        <div className="flex items-center justify-between border-b border-[#181B20]/8 px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-[var(--border-hairline)] px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <FileCheck2 className="h-4 w-4 text-[#1F6E7A]" strokeWidth={1.6} />
-            <h2 className="text-sm font-medium text-[#181B20]">
+            <FileCheck2 className="h-4 w-4 text-[var(--accent-mineral)]" strokeWidth={1.6} />
+            <h2 className="text-sm font-medium text-[var(--ink-primary)]">
               Itens 1 a 3 — Serviços Executados ({team.name})
             </h2>
           </div>
-          <span className="text-xs text-[#7C8594]">{calculation.locationsSummary}</span>
+          <span className="text-xs text-[var(--ink-muted)]">{calculation.locationsSummary}</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-[#181B20]/8 bg-[#F3F4F6]/80 text-[11px] uppercase tracking-wider text-[#525B68]">
+              <tr className="border-b border-[var(--border-hairline)] bg-[var(--surface-chip)] text-[11px] uppercase tracking-wider text-[var(--ink-secondary)]">
                 <th className="px-4 py-2.5">Item</th>
                 <th className="px-4 py-2.5">Descrição</th>
                 <th className="px-4 py-2.5 text-center">Un.</th>
@@ -367,28 +369,30 @@ export function MeasurementsView({
                 <th className="px-4 py-2.5 text-right">Total</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#181B20]/6">
+            <tbody className="divide-y divide-[var(--border-hairline)]">
               {calculation.lineItems.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-6 text-center text-[#7C8594]">
+                  <td colSpan={6} className="px-4 py-6 text-center text-[var(--ink-muted)]">
                     Nenhum serviço ou mobilização lançado para {team.name} neste mês.
                   </td>
                 </tr>
               ) : (
                 calculation.lineItems.map((item) => (
-                  <tr key={item.itemCode} className="hover:bg-white/60">
-                    <td className="tabular-nums px-4 py-2.5 font-medium text-[#1F6E7A]">
+                  <tr key={item.itemCode} className="hover:bg-[var(--surface-hover)]">
+                    <td className="tabular-nums px-4 py-2.5 font-medium text-[var(--accent-mineral)]">
                       {item.itemCode}
                     </td>
-                    <td className="px-4 py-2.5 text-[#181B20]">{item.description}</td>
-                    <td className="px-4 py-2.5 text-center text-[#525B68]">{item.unit}</td>
-                    <td className="tabular-nums px-4 py-2.5 text-right text-[#525B68]">
+                    <td className="px-4 py-2.5 text-[var(--ink-primary)]">{item.description}</td>
+                    <td className="px-4 py-2.5 text-center text-[var(--ink-secondary)]">
+                      {item.unit}
+                    </td>
+                    <td className="tabular-nums px-4 py-2.5 text-right text-[var(--ink-secondary)]">
                       {formatCurrencyBRL(item.unitPrice)}
                     </td>
-                    <td className="tabular-nums px-4 py-2.5 text-right font-medium text-[#181B20]">
+                    <td className="tabular-nums px-4 py-2.5 text-right font-medium text-[var(--ink-primary)]">
                       {formatDecimalBR(item.quantity)}
                     </td>
-                    <td className="tabular-nums px-4 py-2.5 text-right font-semibold text-[#181B20]">
+                    <td className="tabular-nums px-4 py-2.5 text-right font-semibold text-[var(--ink-primary)]">
                       {formatCurrencyBRL(item.totalValue)}
                     </td>
                   </tr>
@@ -403,8 +407,8 @@ export function MeasurementsView({
         <section className="glass-panel rounded-2xl p-5">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Route className="h-4 w-4 text-[#1F6E7A]" strokeWidth={1.6} />
-              <h2 className="text-sm font-medium text-[#181B20]">
+              <Route className="h-4 w-4 text-[var(--accent-mineral)]" strokeWidth={1.6} />
+              <h2 className="text-sm font-medium text-[var(--ink-primary)]">
                 Trechos de Mobilização (Item 1.1)
               </h2>
             </div>
@@ -421,7 +425,7 @@ export function MeasurementsView({
           {showMobForm && (
             <form
               onSubmit={handleAddMobilization}
-              className="mb-4 space-y-2.5 rounded-xl border border-[#181B20]/10 bg-white p-3.5"
+              className="surface-card-inner mb-4 space-y-2.5 rounded-xl p-3.5"
             >
               <div className="grid grid-cols-2 gap-2">
                 <input
@@ -471,12 +475,12 @@ export function MeasurementsView({
                   onChange={(e) => setMobKm(e.target.value)}
                   className="mineral-input px-2.5 py-1.5 text-xs"
                 />
-                <label className="flex items-center gap-2 px-2 text-xs text-[#525B68]">
+                <label className="flex items-center gap-2 px-2 text-xs text-[var(--ink-secondary)]">
                   <input
                     type="checkbox"
                     checked={mobPaidInAdvance}
                     onChange={(e) => setMobPaidInAdvance(e.target.checked)}
-                    className="h-3.5 w-3.5 accent-[#1F6E7A]"
+                    className="h-3.5 w-3.5 accent-[var(--accent-mineral)]"
                   />
                   <span>Pago antecipado</span>
                 </label>
@@ -506,17 +510,19 @@ export function MeasurementsView({
             </form>
           )}
 
-          <div className="divide-y divide-[#181B20]/6">
+          <div className="divide-y divide-[var(--border-hairline)]">
             {teamMobilizations.length === 0 ? (
-              <p className="py-4 text-xs text-[#7C8594]">Nenhum trecho cadastrado neste mês.</p>
+              <p className="py-4 text-xs text-[var(--ink-muted)]">
+                Nenhum trecho cadastrado neste mês.
+              </p>
             ) : (
               teamMobilizations.map((m) => (
                 <div key={m.id} className="flex items-center justify-between gap-2 py-2.5 text-xs">
                   <div>
-                    <p className="font-medium text-[#181B20]">
+                    <p className="font-medium text-[var(--ink-primary)]">
                       {m.origin} → {m.destination}
                     </p>
-                    <p className="text-[11px] text-[#7C8594]">
+                    <p className="text-[11px] text-[var(--ink-muted)]">
                       {formatDateBR(m.date)} · {m.kind}
                       {m.paidInAdvance
                         ? ` · Adiantado: ${formatCurrencyBRL(m.advanceAmount)}`
@@ -524,13 +530,13 @@ export function MeasurementsView({
                     </p>
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <span className="tabular-nums font-medium text-[#181B20]">
+                    <span className="tabular-nums font-medium text-[var(--ink-primary)]">
                       {formatDecimalBR(m.distanceKm, 0)} km
                     </span>
                     <button
                       type="button"
                       onClick={() => onDeleteMobilization(m.id)}
-                      className="text-[#7C8594] hover:text-[#B53D3D]"
+                      className="text-[var(--ink-muted)] hover:text-[var(--status-danger)]"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -544,8 +550,8 @@ export function MeasurementsView({
         <section className="glass-panel rounded-2xl p-5">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Receipt className="h-4 w-4 text-[#1F6E7A]" strokeWidth={1.6} />
-              <h2 className="text-sm font-medium text-[#181B20]">
+              <Receipt className="h-4 w-4 text-[var(--accent-mineral)]" strokeWidth={1.6} />
+              <h2 className="text-sm font-medium text-[var(--ink-primary)]">
                 Item 4 — Descontos, Folha & Reembolsos
               </h2>
             </div>
@@ -562,7 +568,7 @@ export function MeasurementsView({
           {showAdjForm && (
             <form
               onSubmit={handleAddAdjustment}
-              className="mb-4 space-y-2.5 rounded-xl border border-[#181B20]/10 bg-white p-3.5"
+              className="surface-card-inner mb-4 space-y-2.5 rounded-xl p-3.5"
             >
               <div className="grid grid-cols-3 gap-2">
                 <input
@@ -642,31 +648,40 @@ export function MeasurementsView({
             </form>
           )}
 
-          <div className="divide-y divide-[#181B20]/6">
+          <div className="divide-y divide-[var(--border-hairline)]">
             {calculation.paymentItems.length === 0 ? (
-              <p className="py-4 text-xs text-[#7C8594]">
+              <p className="py-4 text-xs text-[var(--ink-muted)]">
                 Nenhum desconto ou reembolso aplicado neste período.
               </p>
             ) : (
               calculation.paymentItems.map((pay, idx) => (
-                <div key={`${pay.code}-${idx}`} className="flex items-start justify-between gap-2 py-2.5 text-xs">
+                <div
+                  key={`${pay.code}-${idx}`}
+                  className="flex items-start justify-between gap-2 py-2.5 text-xs"
+                >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
-                      <span className="tabular-nums font-medium text-[#1F6E7A]">{pay.code}</span>
-                      <span className="font-medium text-[#181B20]">{pay.description}</span>
+                      <span className="tabular-nums font-medium text-[var(--accent-mineral)]">
+                        {pay.code}
+                      </span>
+                      <span className="font-medium text-[var(--ink-primary)]">
+                        {pay.description}
+                      </span>
                       {pay.autoGenerated && (
-                        <span className="rounded-full bg-[#1F6E7A]/10 px-1.5 py-0.5 text-[10px] font-medium text-[#1F6E7A]">
+                        <span className="rounded-full bg-[var(--accent-mineral-soft)] px-1.5 py-0.5 text-[10px] font-medium text-[var(--accent-mineral)]">
                           Auto
                         </span>
                       )}
                     </div>
                     {pay.details && (
-                      <p className="mt-0.5 text-[11px] text-[#7C8594]">{pay.details}</p>
+                      <p className="mt-0.5 text-[11px] text-[var(--ink-muted)]">{pay.details}</p>
                     )}
                   </div>
                   <span
                     className={`tabular-nums shrink-0 font-semibold ${
-                      pay.direction === 'reembolso' ? 'text-[#1E7A56]' : 'text-[#181B20]'
+                      pay.direction === 'reembolso'
+                        ? 'text-[var(--status-meter)]'
+                        : 'text-[var(--ink-primary)]'
                     }`}
                   >
                     {pay.direction === 'reembolso'
@@ -679,15 +694,15 @@ export function MeasurementsView({
           </div>
 
           {teamManualAdjustments.length > 0 && (
-            <div className="mt-3 border-t border-[#181B20]/8 pt-3">
-              <p className="mb-1.5 text-[11px] font-medium text-[#7C8594]">
+            <div className="mt-3 border-t border-[var(--border-hairline)] pt-3">
+              <p className="mb-1.5 text-[11px] font-medium text-[var(--ink-muted)]">
                 Lançamentos manuais editáveis ({teamManualAdjustments.length})
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {teamManualAdjustments.map((adj) => (
                   <span
                     key={adj.id}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#F3F4F6] px-2.5 py-1 text-[11px] text-[#525B68]"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--surface-chip)] px-2.5 py-1 text-[11px] text-[var(--ink-secondary)]"
                   >
                     <span>
                       {adj.description} ({formatCurrencyBRL(adj.amount)})
@@ -695,7 +710,7 @@ export function MeasurementsView({
                     <button
                       type="button"
                       onClick={() => onDeleteAdjustment(adj.id)}
-                      className="text-[#7C8594] hover:text-[#B53D3D]"
+                      className="text-[var(--ink-muted)] hover:text-[var(--status-danger)]"
                     >
                       <Trash2 className="h-3 w-3" />
                     </button>
@@ -708,22 +723,26 @@ export function MeasurementsView({
       </div>
 
       {calculation.financingSnapshot && (
-        <section className="glass-panel overflow-hidden rounded-2xl border-[#C48829]/30">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#C48829]/20 bg-[#C48829]/[0.07] px-5 py-3.5">
+        <section className="glass-panel overflow-hidden rounded-2xl border-[var(--accent-ochre)]/30">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-hairline)] bg-[var(--accent-ochre-soft)] px-5 py-3.5">
             <div className="flex items-center gap-2">
-              <Truck className="h-4 w-4 text-[#B57415]" strokeWidth={1.6} />
+              <Truck className="h-4 w-4 text-[var(--accent-ochre)]" strokeWidth={1.6} />
               <div>
-                <h2 className="text-sm font-medium text-[#181B20]">
+                <h2 className="text-sm font-medium text-[var(--ink-primary)]">
                   Amortização do Veículo — {calculation.financingSnapshot.financing.assetName}
                 </h2>
-                <p className="text-[11px] text-[#525B68]">
-                  Regra automática: {calculation.financingSnapshot.financing.monthlyDeductionPercent}% sobre o bruto da medição · Valor original {formatCurrencyBRL(calculation.financingSnapshot.financing.totalValue)}
+                <p className="text-[11px] text-[var(--ink-secondary)]">
+                  Regra automática: {calculation.financingSnapshot.financing.monthlyDeductionPercent}
+                  % sobre o bruto da medição · Valor original{' '}
+                  {formatCurrencyBRL(calculation.financingSnapshot.financing.totalValue)}
                 </p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[10px] uppercase tracking-wider text-[#7C8594]">Saldo Devedor Atual</p>
-              <p className="tabular-nums text-base font-semibold text-[#181B20]">
+              <p className="text-[10px] uppercase tracking-wider text-[var(--ink-muted)]">
+                Saldo Devedor Atual
+              </p>
+              <p className="tabular-nums text-base font-semibold text-[var(--ink-primary)]">
                 {formatCurrencyBRL(calculation.financingSnapshot.remainingBalance)}
               </p>
             </div>
@@ -732,29 +751,29 @@ export function MeasurementsView({
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[#181B20]/8 bg-[#F8F9FA] text-[11px] text-[#525B68]">
+                <tr className="border-b border-[var(--border-hairline)] bg-[var(--surface-chip)] text-[11px] text-[var(--ink-secondary)]">
                   <th className="px-4 py-2">Boletim de Medição</th>
                   <th className="px-4 py-2 text-right">Desconto</th>
                   <th className="px-4 py-2 text-right">Pago Acumulado</th>
                   <th className="px-4 py-2 text-right">Saldo a Pagar</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#181B20]/6">
+              <tbody className="divide-y divide-[var(--border-hairline)]">
                 {calculation.financingSnapshot.rows.map((row, idx, arr) => {
                   const isCurrent = idx === arr.length - 1;
                   return (
                     <tr
                       key={row.id}
-                      className={isCurrent ? 'bg-[#C48829]/[0.08] font-semibold' : ''}
+                      className={isCurrent ? 'bg-[var(--accent-ochre-soft)] font-semibold' : ''}
                     >
-                      <td className="px-4 py-2 text-[#181B20]">{row.label}</td>
-                      <td className="tabular-nums px-4 py-2 text-right text-[#181B20]">
+                      <td className="px-4 py-2 text-[var(--ink-primary)]">{row.label}</td>
+                      <td className="tabular-nums px-4 py-2 text-right text-[var(--ink-primary)]">
                         {formatCurrencyBRL(row.discountAmount)}
                       </td>
-                      <td className="tabular-nums px-4 py-2 text-right text-[#525B68]">
+                      <td className="tabular-nums px-4 py-2 text-right text-[var(--ink-secondary)]">
                         {formatCurrencyBRL(row.accumulatedPaid)}
                       </td>
-                      <td className="tabular-nums px-4 py-2 text-right text-[#181B20]">
+                      <td className="tabular-nums px-4 py-2 text-right text-[var(--ink-primary)]">
                         {formatCurrencyBRL(row.remainingBalance)}
                       </td>
                     </tr>
@@ -767,4 +786,4 @@ export function MeasurementsView({
       )}
     </div>
   );
-}
+});

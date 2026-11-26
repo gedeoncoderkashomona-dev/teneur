@@ -29,11 +29,25 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#F3F4F6',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F3F4F6' },
+    { media: '(prefers-color-scheme: dark)', color: '#0D1014' },
+  ],
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
 };
+
+const themeInitScript = `
+(function(){
+  try {
+    var saved = localStorage.getItem('teneur_theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = (saved === 'dark' || saved === 'light') ? saved : (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -41,8 +55,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
-      <body className="font-sans antialiased selection:bg-[#1F6E7A]/15 selection:text-[#181B20]">
+    <html lang="pt-BR" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="font-sans antialiased selection:bg-[#1F6E7A]/20 selection:text-[var(--ink-primary)]">
         {children}
       </body>
     </html>

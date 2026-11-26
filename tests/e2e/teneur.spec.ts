@@ -33,6 +33,12 @@ test.describe('Teneur E2E — Desktop & iPhone 14–18 Responsiveness', () => {
     await expect(page.getByTestId('download-ics-all')).toBeVisible();
     await page.getByRole('button').filter({ has: page.locator('svg.lucide-x') }).click();
 
+    await page.getByTestId('theme-toggle').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await assertNoHorizontalOverflow();
+    await page.getByTestId('theme-toggle').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+
     const navPrefix = isMobile ? 'mobile-nav' : 'nav';
 
     await page.getByTestId(`${navPrefix}-measurements`).click();
