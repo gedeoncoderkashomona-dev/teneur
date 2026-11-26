@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   BarChart3,
+  Bell,
   Building2,
   CalendarDays,
   ChevronLeft,
@@ -27,6 +28,7 @@ import type {
 } from '@/domain/types';
 import { getSupabaseBrowserClient } from '@/lib/supabase/client';
 import { CompanySwitcher } from '@/components/ui/CompanySwitcher';
+import { RemindersModal } from '@/components/ui/RemindersModal';
 import { TeneurSplash } from '@/components/ui/TeneurSplash';
 import { ExecutiveOverview } from '@/components/views/ExecutiveOverview';
 import { FieldDiaryView } from '@/components/views/FieldDiaryView';
@@ -62,7 +64,14 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
     initialDataset.signatory.includeLegalRepresentative
   );
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [remindersOpen, setRemindersOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => undefined);
+    }
+  }, []);
 
   const notify = useCallback((message: string) => {
     setToast(message);
@@ -359,8 +368,8 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="glass-bar sticky top-0 z-30 border-b px-4 py-3 sm:px-6">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+        <header className="glass-bar safe-pt sticky top-0 z-30 border-b px-4 pb-3 sm:px-6">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
             <div className="flex items-center gap-2.5 lg:hidden">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#1F6E7A] text-sm font-medium text-white">
                 T
@@ -411,6 +420,17 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
                   <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
+
+              <button
+                type="button"
+                data-testid="reminders-btn"
+                onClick={() => setRemindersOpen(true)}
+                aria-label="Lembretes e Calendário"
+                title="Lembretes e Calendário do Celular"
+                className="btn-secondary p-2 text-[#525B68] hover:text-[#1F6E7A]"
+              >
+                <Bell className="h-4 w-4" strokeWidth={1.6} />
+              </button>
 
               <button
                 type="button"
@@ -526,6 +546,13 @@ export function TeneurApp({ initialDataset, initialStorageMode }: TeneurAppProps
           config={dataset.signatory}
           onClose={() => setSettingsOpen(false)}
           onSave={handleSaveSignatory}
+        />
+      )}
+
+      {remindersOpen && (
+        <RemindersModal
+          onClose={() => setRemindersOpen(false)}
+          onNotify={notify}
         />
       )}
 

@@ -43,6 +43,20 @@
       var(--bg-canvas);
     color: var(--ink-primary);
     min-height: 100dvh;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.safe-pt {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+@media (max-width: 640px) {
+  input.mineral-input,
+  select.mineral-input,
+  textarea.mineral-input {
+    font-size: 16px;
   }
 }
 
