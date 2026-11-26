@@ -218,3 +218,8 @@ alter publication supabase_realtime add table public.financial_adjustments;
 alter publication supabase_realtime add table public.measurements;
 alter publication supabase_realtime add table public.teams;
 alter publication supabase_realtime add table public.projects;
+
+grant usage on schema public to anon, authenticated, service_role;
+grant all privileges on all tables in schema public to anon, authenticated, service_role;
+grant all privileges on all sequences in schema public to anon, authenticated, service_role;
+alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
