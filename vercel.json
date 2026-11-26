@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "functions": {
+    "src/app/api/pdf/boletim/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/api/pdf/relatorio-nbr/route.ts": {
+      "maxDuration": 30
+    }
+  }
+}

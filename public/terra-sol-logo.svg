@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
+  <g transform="translate(4, 6)">
+    <polygon points="24,2 44,22 36,30 24,18 12,30 4,22" fill="#E6B800"/>
+    <polygon points="24,50 44,30 36,22 24,34 12,22 4,30" fill="#1E7B8C"/>
+  </g>
+  <text x="62" y="34" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.02em">
+    <tspan fill="#1E7B8C">Terra</tspan><tspan fill="#D9A700">Sol</tspan>
+  </text>
+  <text x="63" y="51" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="500" letter-spacing="0.06em" fill="#4B5563">
+    engenharia geotécnica
+  </text>
+</svg>
