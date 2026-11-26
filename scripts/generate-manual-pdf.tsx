@@ -361,7 +361,7 @@ function TeneurManualDocument() {
     <Document
       title="Teneur — Manual de Uso"
       author="Okapi Code Forge"
-      subject="Guia Completo de Utilização — Teneur Gestão de Serviços"
+      subject="Manual de Uso — Teneur Gestão de Serviços"
       creator="Okapi Code Forge"
     >
       {/* CAPA */}
@@ -371,10 +371,10 @@ function TeneurManualDocument() {
             <TeneurEmblem size={62} />
             <View style={{ alignItems: 'flex-end' }}>
               <Text style={{ fontSize: 8, color: COLORS.teal, fontFamily: 'Helvetica-Bold', letterSpacing: 1.2 }}>
-                GUIA OFICIAL DO USUÁRIO
+                MANUAL DO USUÁRIO
               </Text>
               <Text style={{ fontSize: 8, color: COLORS.muted, marginTop: 2 }}>
-                Versão 1.0 · Celular (iPhone / Android) & Notebook
+                Versão 1.0 · Celular (iPhone / Android) e Notebook
               </Text>
             </View>
           </View>
@@ -389,47 +389,47 @@ function TeneurManualDocument() {
           <View style={{ width: 64, height: 2.5, backgroundColor: COLORS.ochre, marginTop: 18, marginBottom: 18, borderRadius: 2 }} />
 
           <Text style={{ fontSize: 15, color: COLORS.ink, lineHeight: 1.45, maxWidth: 440 }}>
-            Manual prático, leve e passo a passo para acompanhar equipes de campo, fechar medições automáticas e gerar apresentações em PDF com padrão de engenharia.
+            Guia prático de uso para acompanhar equipes de campo, fechar medições mensais e gerar relatórios técnicos em PDF.
           </Text>
         </View>
 
         <View style={s.coverBody}>
           <View>
             <View style={[s.cardWhite, { padding: 18 }]}>
-              <Text style={s.kicker}>Preparado especialmente para</Text>
+              <Text style={s.kicker}>Responsável Técnica</Text>
               <Text style={{ fontSize: 14, fontFamily: 'Helvetica-Bold', color: COLORS.ink }}>
                 Catherine Irina Pascoal Gouveia
               </Text>
               <Text style={{ fontSize: 9.5, color: COLORS.slate, marginTop: 2 }}>
-                Engenheira de Minas · Coordenação de Serviços e Equipes de Campo
+                Engenheira de Minas · Coordenação de Equipes e Serviços de Campo
               </Text>
               <View style={{ height: 0.7, backgroundColor: COLORS.border, marginVertical: 11 }} />
               <Text style={{ fontSize: 8.8, color: COLORS.slate, lineHeight: 1.55 }}>
-                O Teneur nasceu para transformar horas de planilhas e conferências manuais em poucos toques — com precisão matemática no centavo, sincronização em tempo real entre seu iPhone e seu notebook, e relatórios prontos para encantar em qualquer reunião.
+                O Teneur centraliza o registro diário das equipes, o cálculo de medições e a emissão dos documentos mensais em um único lugar. Tudo o que você lança no celular aparece na hora no computador, reduzindo o trabalho manual no fechamento do mês.
               </Text>
             </View>
 
             <View style={[s.grid2, { marginTop: 6 }]}>
               <View style={[s.cardTeal, s.col]}>
                 <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', color: COLORS.teal, textTransform: 'uppercase' }}>
-                  Acesso Oficial
+                  Endereço de Acesso
                 </Text>
                 <Text style={{ fontSize: 11, fontFamily: 'Helvetica-Bold', color: COLORS.ink, marginTop: 4 }}>
                   https://teneur.vercel.app
                 </Text>
                 <Text style={{ fontSize: 8, color: COLORS.slate, marginTop: 3 }}>
-                  Funciona em tempo real no celular e no computador, sem precisar instalar nada da loja.
+                  Acesso direto pelo navegador do celular ou computador, com sincronização automática.
                 </Text>
               </View>
 
               <View style={[s.cardOchre, s.col]}>
                 <Text style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold', color: COLORS.ochre, textTransform: 'uppercase' }}>
-                  O que você vai dominar
+                  Conteúdo deste manual
                 </Text>
                 <Text style={{ fontSize: 8.3, color: COLORS.ink, marginTop: 4, lineHeight: 1.5 }}>
-                  • App nativo no iPhone + Lembretes na Agenda{'\n'}
+                  • Instalação na tela inicial do iPhone e agenda{'\n'}
                   • Diário de campo e regra Metro x Diária{'\n'}
-                  • Boletins PDF, S10 Prata e Relatório NBR
+                  • Fechamento mensal, boletins e relatório NBR
                 </Text>
               </View>
             </View>
@@ -448,70 +448,70 @@ function TeneurManualDocument() {
 
       {/* PÁGINA 2 — VISÃO GERAL E NAVEGAÇÃO */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="1. Visão Geral & Navegação" />
+        <PageChrome section="1. Visão Geral e Navegação" />
 
         <Text style={s.kicker}>Capítulo 1</Text>
         <Text style={s.h1}>Como o Teneur está organizado</Text>
         <Text style={s.lead}>
-          Ao abrir o Teneur, você verá uma tela de boas-vindas suave de 2,5 segundos e logo entra no painel principal. Tudo o que você salvar no celular aparece na hora no notebook (e vice-versa), gravado em nuvem em tempo real.
+          Ao abrir o sistema, todos os dados são carregados e sincronizados em nuvem. Qualquer alteração feita no celular fica disponível imediatamente no notebook.
         </Text>
 
-        <Text style={s.h2}>Os 5 módulos principais (menu lateral no notebook / barra inferior no iPhone)</Text>
+        <Text style={s.h2}>Os 5 módulos principais (menu lateral no notebook / barra inferior no celular)</Text>
 
         <View style={s.card}>
           <Step
             num="1"
             title="Visão Geral (Painel)"
-            text="Mostra os 4 indicadores do mês (Medição Bruta, Líquido a Pagar, Produção em metros/diárias e Taxa de Ocupação), 4 gráficos interativos, o botão para baixar o Relatório Executivo NBR em PDF e o Termômetro de Produção em tempo real de cada equipe."
+            text="Exibe os 4 indicadores do mês (Medição Bruta, Líquido a Pagar, Produção em metros/diárias e Taxa de Ocupação), 4 gráficos interativos, o resumo parcial de cada equipe e o botão para baixar o Relatório Executivo NBR em PDF."
           />
           <Step
             num="2"
             title="Diário de Campo (Diário)"
-            text="É a sua tela do dia a dia. Mostra o calendário mensal de cada equipe, avisa quantos dias estão sem apontamento e calcula automaticamente se o dia fechou por Metro Perfurado ou Diária Mínima."
+            text="Tela usada no dia a dia. Mostra o calendário mensal de cada equipe, indica quantos dias ainda estão sem registro e define automaticamente se o dia será faturado por Metro Perfurado ou Diária Mínima."
           />
           <Step
             num="3"
             title="Medições"
-            text="Monta sozinho o Boletim de Medição completo do mês: junta furos, diárias, trechos de mobilização (km), descontos automáticos (7% veículo, 15% equipamento SPT), folha CLT, reembolsos e gera o PDF oficial com a Memória de Cálculo."
+            text="Reúne automaticamente os metros, diárias, trechos de mobilização (km), descontos contratuais (7% veículo, 15% equipamento SPT), folha CLT e reembolsos, gerando o Boletim de Medição e a Memória de Cálculo em PDF."
           />
           <Step
             num="4"
             title="Equipes"
-            text="Guarda os contratos individuais de cada sondador (diária mínima, valor do metro SPT e Trado, valor do km de mobilização, % de equipamento SPT e taxa de rastreador). Você pode editar ou cadastrar novas equipes quando precisar."
+            text="Mantém as regras contratuais de cada sondador (diária mínima, valor do metro SPT e Trado, valor do km de mobilização, percentual de equipamento SPT e rastreador). Permite editar contratos e cadastrar novas equipes."
           />
           <Step
             num="5"
             title="Obras & Pastas (Obras)"
-            text="Organiza suas Pastas, Clientes, OS e cidades sem erros de digitação — e mostra automaticamente quantos metros, diárias e qual o custo de campo acumulado em cada obra no mês."
+            text="Cadastra Pastas, Clientes, OS e cidades de forma padronizada, mostrando quantos metros, diárias e qual o custo de campo acumulado em cada obra durante o mês."
           />
         </View>
 
-        <Text style={s.h2}>Os 4 atalhos inteligentes da barra superior</Text>
+        <Text style={s.h2}>Controles da barra superior</Text>
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>Seletor de Mês (&lt; Outubro/2026 &gt;)</Text>
             <Text style={s.stepText}>
-              Troca instantaneamente todo o sistema (gráficos, calendário, medições e PDFs) entre meses passados, mês atual e meses futuros.
+              Altera o período exibido em todo o sistema (gráficos, calendário, medições e PDFs) entre meses anteriores, mês atual e próximos meses.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Empresa Ativa (logo abaixo de Teneur)</Text>
+            <Text style={s.stepTitle}>Empresa Ativa (abaixo de Teneur)</Text>
             <Text style={s.stepText}>
-              Toque em “Terra Sol” (com a setinha ao lado) para alternar entre empresas ou adicionar outra empresa futuramente — os PDFs acompanham automaticamente a empresa escolhida.
+              Toque em “Terra Sol” para alternar entre empresas ou cadastrar outra contratante no futuro. O cabeçalho dos PDFs acompanha a empresa selecionada.
             </Text>
           </View>
         </View>
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Sininho & Modo Noturno (Lua / Sol)</Text>
+            <Text style={s.stepTitle}>Sininho e Modo Noturno (Lua / Sol)</Text>
             <Text style={s.stepText}>
-              O sininho ativa notificações e lembretes no Calendário; o ícone de Lua/Sol alterna instantaneamente entre o Modo Claro e o Modo Noturno em vidro fosco.
+              O sininho configura notificações e lembretes no Calendário do celular. O botão Lua/Sol alterna entre o Modo Claro e o Modo Noturno.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Engrenagem (Assinatura & CREA)</Text>
+            <Text style={s.stepTitle}>Engrenagem (Assinatura e CREA)</Text>
             <Text style={s.stepText}>
-              Permite ajustar seu nome, título (Engenheira de Minas), incluir seu número do CREA e definir o padrão da assinatura da Representante Legal.
+              Permite editar seu nome, título profissional (Engenheira de Minas), incluir o número do CREA e definir se a assinatura da Representante Legal vem marcada por padrão.
             </Text>
           </View>
         </View>
@@ -519,15 +519,15 @@ function TeneurManualDocument() {
 
       {/* PÁGINA 3 — IPHONE APP NATIVO, NOTIFICAÇÕES E CALENDÁRIO */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="2. iPhone App Nativo, Notificações & Agenda" />
+        <PageChrome section="2. App no iPhone, Notificações e Agenda" />
 
-        <Text style={s.kicker}>Capítulo 2 · Experiência no iPhone</Text>
+        <Text style={s.kicker}>Capítulo 2 · Uso no iPhone</Text>
         <Text style={s.h1}>Colocando o Teneur na Tela Inicial do iPhone</Text>
         <Text style={s.lead}>
-          Você pode salvar o Teneur direto na tela do seu iPhone para usá-lo igualzinho a um aplicativo baixado da App Store — em tela cheia, super rápido e sem precisar digitar o site toda vez.
+          Você pode adicionar o Teneur à tela inicial do iPhone para abri-lo em tela cheia, como um aplicativo normal, sem precisar abrir o navegador nem digitar o endereço toda vez.
         </Text>
 
-        <Text style={[s.h2, { marginTop: 6, marginBottom: 4 }]}>2.1 Passo a passo para instalar no iPhone (leva 20 segundos)</Text>
+        <Text style={[s.h2, { marginTop: 6, marginBottom: 4 }]}>2.1 Como adicionar o Teneur à Tela de Início</Text>
         <View style={[s.cardWhite, { padding: 8, marginBottom: 7 }]}>
           <IphoneInstallDiagram />
         </View>
@@ -535,23 +535,23 @@ function TeneurManualDocument() {
         <View style={[s.card, { padding: 10, marginBottom: 7 }]}>
           <Step
             num="1"
-            title="Abra o link usando o Safari"
-            text="No seu iPhone, abra o Safari (ícone da bússola azul) e acesse https://teneur.vercel.app. Faça sempre pelo Safari para liberar o modo aplicativo em tela cheia."
+            title="Abra o link no Safari"
+            text="No iPhone, abra o Safari (ícone da bússola azul) e acesse https://teneur.vercel.app. Use sempre o Safari para liberar o modo tela cheia."
           />
           <Step
             num="2"
-            title="Toque no botão Compartilhar (na barra lá embaixo)"
-            text="Na barra inferior do Safari, bem no meio, toque no quadradinho com uma seta apontando para cima."
+            title="Toque no botão Compartilhar (na barra inferior)"
+            text="Na parte de baixo do Safari, bem no centro, toque no quadradinho com uma seta apontando para cima."
           />
           <Step
             num="3"
-            title="Escolha “Adicionar à Tela de Início”"
-            text="Um menu vai subir. Deslize esse menu para cima e toque na opção “Adicionar à Tela de Início”."
+            title="Toque em “Adicionar à Tela de Início”"
+            text="Um menu vai subir na tela. Deslize esse menu para cima até encontrar “Adicionar à Tela de Início” e toque nessa opção."
           />
           <Step
             num="4"
-            title="Toque em “Adicionar” e pronto!"
-            text="Confirme no canto superior direito. O ícone verde-petróleo do Teneur aparecerá junto com seus outros aplicativos!"
+            title="Confirme em “Adicionar”"
+            text="Toque em “Adicionar” no canto superior direito. O ícone do Teneur vai aparecer na tela inicial do iPhone junto com os seus outros aplicativos."
           />
         </View>
 
@@ -561,92 +561,92 @@ function TeneurManualDocument() {
             <Text style={s.stepTitle}>Alertas diretos no aparelho</Text>
             <Text style={[s.stepText, { marginTop: 2 }]}>
               1. Abra o Teneur pelo ícone da Tela de Início.{'\n'}
-              2. Toque no ícone de Sininho no topo direito.{'\n'}
+              2. Toque no ícone de Sininho no canto superior direito.{'\n'}
               3. Toque em “Ativar notificações neste dispositivo” e depois em “Permitir”.{'\n'}
-              4. Use “Testar notificação” para confirmar!
+              4. Use “Testar notificação” para confirmar o recebimento.
             </Text>
           </View>
 
           <View style={[s.cardOchre, s.col, { padding: 10, marginBottom: 0 }]}>
             <Text style={[s.kicker, { color: COLORS.ochre }]}>2.3 Calendário do Celular</Text>
-            <Text style={s.stepTitle}>Lembretes automáticos (Diário + Mensal)</Text>
+            <Text style={s.stepTitle}>Lembretes recorrentes (Diário e Mensal)</Text>
             <Text style={[s.stepText, { marginTop: 2 }]}>
-              1. No mesmo menu do Sininho, escolha o horário do lembrete diário (ex.: 18:00) e o dia do fechamento mensal (ex.: dia 28).{'\n'}
+              1. No menu do Sininho, defina o horário do lembrete diário (ex.: 18:00) e o dia do fechamento mensal (ex.: dia 28).{'\n'}
               2. Toque em “Adicionar Lembrete Diário + Mensal ao Calendário”.{'\n'}
-              3. Toque em “Adicionar Tudo” no app Calendário!
+              3. Toque em “Adicionar Tudo” no app Calendário.
             </Text>
           </View>
         </View>
 
         <View style={[s.card, { padding: 10, marginBottom: 0 }]}>
-          <Text style={s.stepTitle}>O que o Calendário vai te lembrar automaticamente</Text>
+          <Text style={s.stepTitle}>Como funcionam os lembretes na agenda</Text>
           <Text style={s.stepText}>
-            • Segunda a sábado (no horário escolhido): aviso 10 minutos antes com link direto para o Diário de Campo.{'\n'}
-            • Todo dia 28 (e na véspera): lembrete para conferir dias sem registro, fechar os Boletins e baixar o Relatório NBR mensal.
+            • Segunda a sábado (no horário configurado): aviso 10 minutos antes com link direto para atualizar o Diário de Campo.{'\n'}
+            • Todo dia 28 (e um dia antes): lembrete para revisar pendências do mês, fechar os boletins e gerar o Relatório NBR.
           </Text>
         </View>
       </Page>
 
       {/* PÁGINA 4 — DIÁRIO DE CAMPO E REGRA AUTOMÁTICA */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="3. Diário de Campo & Cálculo Automático" />
+        <PageChrome section="3. Diário de Campo e Cálculo Automático" />
 
-        <Text style={s.kicker}>Capítulo 3 · Rotina de 15 segundos</Text>
-        <Text style={s.h1}>Registrando a produção diária no Diário de Campo</Text>
+        <Text style={s.kicker}>Capítulo 3 · Acompanhamento diário</Text>
+        <Text style={s.h1}>Registrando a produção no Diário de Campo</Text>
         <Text style={s.lead}>
-          Com o Diário de Campo sempre atualizado, o fechamento do fim do mês acontece praticamente sozinho — sem precisar procurar anotações perdidas ou somar planilhas manualmente.
+          Mantendo o Diário de Campo preenchido durante o mês, os totais de metros e diárias ficam prontos automaticamente para o fechamento da medição.
         </Text>
 
         <View style={s.card}>
           <Step
             num="1"
-            title="Escolha a equipe e toque no dia desejado"
-            text="Na aba Diário, selecione o sondador nas pílulas do topo (Leonardo, Ramon, Marcos, Luís, Junior ou Dulcivan) e toque direto no número do dia no calendário (ou no botão “+ Apontar Dia”)."
+            title="Selecione a equipe e toque no dia"
+            text="Na aba Diário, escolha o sondador no topo (Leonardo, Ramon, Marcos, Luís, Junior ou Dulcivan) e toque direto no dia do calendário ou no botão “+ Apontar Dia”."
           />
           <Step
             num="2"
-            title="Informe Status, Pasta/Obra e Atividade"
-            text="Escolha se a equipe estava Em Obra, em Mobilização/Viagem, Parada c/ Diária (aguardando cliente/liberação), Em Casa, Folga/Domingo ou Manutenção. Depois selecione a Pasta/Obra correspondente."
+            title="Defina Status, Pasta/Obra e Atividade"
+            text="Informe se a equipe esteve Em Obra, em Mobilização/Viagem, Parada c/ Diária (aguardando cliente ou liberação), Em Casa, Folga/Domingo ou Manutenção, e vincule a Pasta/Obra."
           />
           <Step
             num="3"
-            title="Lance os Furos ou o Ensaio do dia"
-            text="Se houve perfuração, informe o código (ex.: SP-01), o tipo (SPT, Trado ou Rotativa), a profundidade em metros e toque em “+ Add” (você pode adicionar quantos furos quiser no mesmo dia). Se foi ensaio (EP, E.A, Vane Test, Resistividade), preencha a descrição."
+            title="Lance os Furos ou o Ensaio realizado"
+            text="Em dias de perfuração, preencha o código do furo (ex.: SP-01), o tipo (SPT, Trado ou Rotativa), a profundidade em metros e clique em “+ Add”. Para ensaios (EP, E.A, Vane Test, Resistividade), preencha o campo de descrição."
           />
           <Step
             num="4"
-            title="Marque o Equipamento SPT quando aplicável e Salve"
-            text="Se a equipe usou o equipamento SPT da empresa (ex.: regra de 15% do Leonardo), deixe marcada a caixinha “Usou equipamento SPT”. Confira a Prévia Automática no rodapé do formulário e toque em “Salvar Apontamento”."
+            title="Indique uso de Equipamento SPT e salve"
+            text="Quando a equipe utilizar equipamento SPT sujeito a desconto contratual (como a regra de 15% do Leonardo), mantenha marcada a opção “Usou equipamento SPT”. Confira a prévia do valor e toque em “Salvar Apontamento”."
           />
         </View>
 
-        <Text style={s.h2}>Como funciona a Regra Automática (Metro × Diária Mínima)</Text>
+        <Text style={s.h2}>Regra automática de cálculo (Metro x Diária Mínima)</Text>
         <View style={s.grid2}>
           <View style={[s.cardTeal, s.col]}>
             <Text style={[s.stepTitle, { color: COLORS.teal }]}>
-              Quando vira Diária Mínima (Auto)
+              Faturamento por Diária Mínima (Auto)
             </Text>
             <Text style={s.stepText}>
-              • Dias apenas de ensaios (EP, E.A, Vane Test) ou parada aguardando liberação de cliente;{'\n'}
-              • Dias de sondagem em que (metros x R$/m) for MENOR que a diária mínima.{'\n'}
-              Ex.: 8,45 m x R$ 60 = R$ 507,00 (menor que R$ 1.050,00): o Teneur converte sozinho para 1,0 Diária (R$ 1.050,00)!
+              • Dias apenas com ensaios (EP, E.A, Vane Test) ou parada aguardando liberação do cliente;{'\n'}
+              • Dias de sondagem em que (metros x R$/m) ficar abaixo da diária mínima.{'\n'}
+              Ex.: 8,45 m x R$ 60 = R$ 507,00 (abaixo de R$ 1.050,00): o sistema contabiliza 1,0 Diária (R$ 1.050,00).
             </Text>
           </View>
 
           <View style={[s.cardWhite, s.col, { borderColor: '#B8DEC9', backgroundColor: COLORS.greenSoft }]}>
             <Text style={[s.stepTitle, { color: COLORS.green }]}>
-              Quando fatura por Metro (Auto)
+              Faturamento por Metro (Auto)
             </Text>
             <Text style={s.stepText}>
-              • Dias de sondagem em que (metros x R$/m) atingir ou superar a diária mínima.{'\n'}
-              Ex.: 23,44 m x R$ 60 = R$ 1.406,40 (maior que R$ 1.050,00): fatura automaticamente por Metro Perfurado (R$ 1.406,40)!{'\n'}
-              • Precisa de exceção? Em “Regra de Faturamento”, você pode escolher Meia Diária (0,5) ou ajuste manual.
+              • Dias de sondagem em que (metros x R$/m) atingir ou ultrapassar a diária mínima.{'\n'}
+              Ex.: 23,44 m x R$ 60 = R$ 1.406,40 (acima de R$ 1.050,00): o sistema fatura por Metro Perfurado (R$ 1.406,40).{'\n'}
+              • Para exceções, use o campo “Regra de Faturamento” (ex.: Forçar Meia Diária 0,5).
             </Text>
           </View>
         </View>
 
         <View style={s.card}>
-          <Text style={s.stepTitle}>Legenda visual do Calendário + Radar de Lacunas</Text>
+          <Text style={s.stepTitle}>Legenda do calendário e dias sem registro</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: 4 }}>
             <View style={s.dotRow}>
               <View style={[s.dot, { backgroundColor: COLORS.green }]} />
@@ -670,159 +670,159 @@ function TeneurManualDocument() {
             </View>
           </View>
           <Text style={[s.stepText, { marginTop: 5 }]}>
-            O cartão “Cobertura do Mês” no topo da aba Diário avisa discretamente quantos dias ainda estão sem registro, evitando qualquer esquecimento antes de fechar a medição.
+            O indicador “Cobertura do Mês” no topo da tela mostra quantos dias ainda não têm lançamento para facilitar a revisão antes do fechamento.
           </Text>
         </View>
       </Page>
 
       {/* PÁGINA 5 — FECHAMENTO MENSAL E BOLETIM PDF */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="4. Fechamento Mensal & Boletim PDF" />
+        <PageChrome section="4. Fechamento Mensal e Boletim PDF" />
 
-        <Text style={s.kicker}>Capítulo 4 · Precisão até o centavo</Text>
+        <Text style={s.kicker}>Capítulo 4 · Fechamento mensal</Text>
         <Text style={s.h1}>Fechando Medições e Gerando o Boletim em PDF</Text>
         <Text style={s.lead}>
-          No fim do mês (ou sempre que quiser conferir o valor parcial), acesse a aba Medições. Todos os metros e diárias lançados no Diário já estarão somados nos Itens 1 a 3.
+          Na aba Medições, os serviços lançados no Diário já aparecem consolidados nos Itens 1 a 3. Basta conferir as mobilizações, incluir os lançamentos financeiros do mês e emitir o PDF.
         </Text>
 
         <View style={s.card}>
           <Step
             num="1"
             title="Lançar trechos de Mobilização (Item 1.1)"
-            text="No bloco “Trechos de Mobilização”, toque em “+ Trecho”, informe Data, Tipo (Mobilização, Desmobilização ou Deslocamento), Origem, Destino e Distância (km). Se a empresa já adiantou o pagamento daquele trecho, marque “Pago antecipado” e informe o valor — o desconto entra sozinho no Item 4.1!"
+            text="Em “Trechos de Mobilização”, clique em “+ Trecho” e informe Data, Tipo (Mobilização, Desmobilização ou Deslocamento), Origem, Destino e Distância (km). Caso o trecho já tenha sido pago antecipadamente, marque “Pago antecipado” e informe o valor para gerar o desconto automático no Item 4.1."
           />
           <Step
             num="2"
             title="Conferir Descontos Automáticos e lançar Folha / Reembolsos (Item 4)"
-            text="Os descontos contratuais aparecem automaticamente com a etiqueta “Auto”: Mobilizações pagas (4.1), Compra do Veículo 7% (4.2) e Equipamento SPT 15% (4.3). Para incluir Folha CLT (4.6), Rastreador (4.5) ou Reembolsos de compras (4.7, ex.: termômetro, cimento com NFC-e), clique em “+ Lançar”. Reembolsos aparecem em verde somando ao saldo líquido."
+            text="Mobilizações pagas (4.1), Compra do Veículo 7% (4.2) e Equipamento SPT 15% (4.3) são calculados automaticamente (etiqueta “Auto”). Clique em “+ Lançar” para registrar Folha CLT (4.6), Rastreador (4.5) ou Reembolsos de compras (4.7, com referência da NFC-e). Reembolsos aparecem em verde somando ao saldo líquido."
           />
           <Step
             num="3"
-            title="Acompanhar a Amortização do Veículo (ex.: S10 Prata)"
-            text="Para equipes com financiamento ativo, o quadro de Amortização é atualizado sozinho todo mês: calcula os 7% sobre o bruto, soma ao valor pago acumulado e mostra o novo saldo devedor exato — sem copiar nenhuma célula!"
+            title="Conferir a Amortização do Veículo (ex.: S10 Prata)"
+            text="Para equipes com financiamento ativo, o quadro de amortização aplica os 7% sobre o valor bruto da medição, atualiza o valor pago acumulado e calcula o saldo devedor restante de forma automática."
           />
           <Step
             num="4"
-            title="Aprovar status, copiar Resumo WhatsApp e baixar o PDF"
-            text="Mude o status do mês no topo (Aberta > Em Revisão > Fechada > Paga). Use “Resumo WhatsApp” para enviar o fechamento pronto em texto para o sondador ou financeiro, e clique em “Baixar Boletim PDF”."
+            title="Atualizar status, enviar resumo e baixar o PDF"
+            text="Avance o status no topo (Aberta > Em Revisão > Fechada > Paga). Use “Resumo WhatsApp” para copiar os totais formatados em texto e clique em “Baixar Boletim PDF” para salvar o arquivo."
           />
         </View>
 
         <View style={s.cardTeal}>
-          <Text style={s.kicker}>O que vem dentro do Boletim de Medição PDF</Text>
+          <Text style={s.kicker}>Estrutura do Boletim de Medição PDF</Text>
           <View style={s.grid2}>
             <View style={s.col}>
-              <Text style={s.stepTitle}>Página 1 — Boletim Oficial (A4 Paisagem)</Text>
+              <Text style={s.stepTitle}>Página 1 · Boletim Oficial (A4 Paisagem)</Text>
               <Text style={s.stepText}>
-                • Cabeçalho com empresa ativa, período e código único de autenticidade;{'\n'}
+                • Cabeçalho com empresa ativa, período e código de controle;{'\n'}
                 • Itens 1 a 3 (Mobilização, Sondagem, Diárias) e Subtotal Bruto;{'\n'}
-                • Item 4 (Pagamentos, Descontos e Reembolsos) + Quadro do Veículo;{'\n'}
-                • Destaque do Saldo Líquido a Pagar e bloco de assinaturas.
+                • Item 4 (Pagamentos, Descontos e Reembolsos) e quadro do veículo;{'\n'}
+                • Saldo Líquido a Pagar e bloco de assinaturas.
               </Text>
             </View>
             <View style={s.col}>
-              <Text style={s.stepTitle}>Página 2+ — Memória de Cálculo (A4 Retrato)</Text>
+              <Text style={s.stepTitle}>Página 2+ · Memória de Cálculo (A4 Retrato)</Text>
               <Text style={s.stepText}>
-                • Detalhamento linha a linha de cada trecho (km), furo (SP/ST), diária por Pasta/Obra e data, além dos reembolsos com referência fiscal;{'\n'}
-                • Assinatura eletrônica de Catherine Irina Pascoal Gouveia — Engenheira de Minas, com data e hora exata da geração.
+                • Lista detalhada de cada trecho (km), furo (SP/ST), diária por Pasta/Obra e data, além dos reembolsos com nota ou comprovante;{'\n'}
+                • Assinatura técnica de Catherine Irina Pascoal Gouveia (Engenheira de Minas) com data e hora da emissão.
               </Text>
             </View>
           </View>
           <Text style={[s.stepText, { marginTop: 4 }]}>
-            Dica: Antes de baixar o PDF, você pode marcar ou desmarcar a caixinha “Assinatura Eng. Damiana” no topo para incluir ou ocultar a assinatura da Representante Legal.
+            Antes de gerar o PDF, você pode marcar ou desmarcar “Assinatura Eng. Damiana” no topo para incluir ou ocultar a assinatura da Representante Legal.
           </Text>
         </View>
       </Page>
 
       {/* PÁGINA 6 — PAINEL EXECUTIVO E RELATÓRIO ABNT NBR */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="5. Painel Executivo & Relatório ABNT NBR" />
+        <PageChrome section="5. Indicadores e Relatório ABNT NBR" />
 
-        <Text style={s.kicker}>Capítulo 5 · Apresentações de alto nível</Text>
+        <Text style={s.kicker}>Capítulo 5 · Indicadores e Relatórios</Text>
         <Text style={s.h1}>Gráficos Interativos e Relatório Executivo NBR</Text>
         <Text style={s.lead}>
-          Na aba Visão Geral, o Teneur transforma seus lançamentos diários em indicadores executivos prontos para reuniões de diretoria — com visual limpo e download direto em PDF seguindo diretrizes da ABNT NBR.
+          Na aba Visão Geral, o sistema consolida os registros do mês em gráficos e indicadores prontos para acompanhamento gerencial e exportação em PDF no padrão ABNT NBR.
         </Text>
 
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>1. Produção por Equipe</Text>
             <Text style={s.stepText}>
-              Compara em barras duplas os Metros Perfurados e as Diárias faturadas de cada sondador no mês selecionado.
+              Compara em barras os Metros Perfurados e as Diárias faturadas de cada sondador no mês selecionado.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>2. Taxa de Ocupação da Frota</Text>
             <Text style={s.stepText}>
-              Mostra o equilíbrio entre dias Produtivos em Obra, Parados por Cliente/Liberação, Em Casa/Ocioso e Manutenção.
+              Mostra a divisão entre dias Produtivos em Obra, Parados por Cliente/Liberação, Em Casa/Ocioso e Manutenção.
             </Text>
           </View>
         </View>
 
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>3. Financeiro & Evolução Semestral</Text>
+            <Text style={s.stepTitle}>3. Financeiro e Evolução Semestral</Text>
             <Text style={s.stepText}>
-              Acompanha os últimos 6 meses de Bruto vs. Líquido junto com a linha do peso percentual da Mobilização sobre o total.
+              Exibe os últimos 6 meses de Bruto vs. Líquido junto com a curva do peso percentual da Mobilização sobre o total.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>4. Produtividade Média (m/dia)</Text>
             <Text style={s.stepText}>
-              Exibe o rendimento médio diário de perfuração em SPT e a Trado por equipe para identificar rapidamente alta performance.
+              Apresenta o rendimento médio diário em sondagem SPT e a Trado por equipe para comparar o desempenho de campo.
             </Text>
           </View>
         </View>
 
         <View style={s.card}>
-          <Text style={s.stepTitle}>Termômetro em Tempo Real (“Quanto produziu até hoje?”)</Text>
+          <Text style={s.stepTitle}>Resumo Parcial por Equipe (até a data atual)</Text>
           <Text style={s.stepText}>
-            Logo abaixo dos gráficos, cada equipe tem um cartão vivo com metros acumulados, diárias, km de mobilização, status e líquido estimado até o momento — além de botões rápidos para ir direto ao Diário ou ao Boletim daquela equipe.
+            Abaixo dos gráficos, cada equipe possui um resumo em tempo real com metros acumulados, diárias, km de mobilização, status e valor líquido estimado até o momento, além de atalhos diretos para o Diário e o Boletim.
           </Text>
         </View>
 
         <View style={s.cardTeal}>
-          <Text style={s.kicker}>Como baixar a apresentação mensal em PDF (Padrão ABNT NBR)</Text>
+          <Text style={s.kicker}>Como emitir o Relatório Executivo NBR (PDF)</Text>
           <Step
             num="1"
-            title="Selecione o mês desejado no topo"
-            text="Certifique-se de que o seletor de mês está no período da reunião (ex.: Outubro/2026)."
+            title="Selecione o mês de referência no topo"
+            text="Confira no seletor superior se o mês escolhido corresponde ao período da apresentação (ex.: Outubro/2026)."
           />
           <Step
             num="2"
-            title="Defina se deseja incluir a Representante Legal"
-            text="Marque ou desmarque “Assinatura Eng. Damiana” ao lado do botão de download."
+            title="Defina as assinaturas"
+            text="Marque ou desmarque “Assinatura Eng. Damiana” ao lado do botão de download conforme a necessidade do documento."
           />
           <Step
             num="3"
-            title="Toque em “Baixar Relatório NBR (PDF)”"
-            text="O Teneur gera na hora um Relatório Técnico-Gerencial estruturado conforme ABNT NBR 10719 / NBR 6024 / NBR 6484 (margens 3 cm / 2 cm, seções numeradas de 1 a 6, tabelas com título e Fonte, gráficos vetoriais nítidos, paginação Página X de Y e sua assinatura técnica com data/hora)."
+            title="Clique em “Baixar Relatório NBR (PDF)”"
+            text="O arquivo é gerado em formato ABNT NBR 10719 / NBR 6024 / NBR 6484, com margens oficiais (3 cm / 2 cm), seções numeradas de 1 a 6, tabelas com título e Fonte, gráficos vetoriais, paginação Página X de Y e sua assinatura técnica datada."
           />
         </View>
 
         <Text style={[s.stepText, { marginTop: 2 }]}>
-          Dica extra para slides (PowerPoint / Canva): cada gráfico na tela também possui um pequeno ícone de menu no canto superior direito que permite salvar aquele gráfico individual em imagem PNG de alta qualidade.
+          Para usar um gráfico separado em slides (PowerPoint ou Canva), toque no pequeno ícone de menu no canto superior direito do gráfico e salve a imagem em PNG.
         </Text>
       </Page>
 
       {/* PÁGINA 7 — EQUIPES, OBRAS, MULTI-EMPRESAS E CHECKLIST */}
       <Page size="A4" style={s.page}>
-        <PageChrome section="6. Cadastros, Multi-Empresas & Checklist" />
+        <PageChrome section="6. Cadastros e Rotina de Uso" />
 
-        <Text style={s.kicker}>Capítulo 6 · Controle completo</Text>
-        <Text style={s.h1}>Equipes, Obras/Pastas, Multi-Empresas & Rotina</Text>
+        <Text style={s.kicker}>Capítulo 6 · Cadastros e Rotina</Text>
+        <Text style={s.h1}>Equipes, Obras/Pastas, Empresas e Rotina</Text>
 
         <View style={s.grid2}>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Equipes & Tabelas Contratuais</Text>
+            <Text style={s.stepTitle}>Equipes e Tabelas Contratuais</Text>
             <Text style={s.stepText}>
-              Na aba Equipes, toque no ícone de lápis em qualquer sondador para ajustar Diária Mínima, R$/m SPT, R$/m Trado, R$/km, % de Equipamento SPT ou Rastreador — ou clique em “+ Nova Equipe” para cadastrar novos profissionais.
+              Na aba Equipes, clique no ícone de edição em qualquer sondador para atualizar Diária Mínima, R$/m SPT, R$/m Trado, R$/km, % de Equipamento SPT ou Rastreador, ou use “+ Nova Equipe” para incluir novos profissionais.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Obras & Pastas (Mini-CRM)</Text>
+            <Text style={s.stepTitle}>Obras e Pastas</Text>
             <Text style={s.stepText}>
-              Na aba Obras, cadastre cada nova Pasta, Cliente, OS e Cidade/UF em “+ Nova Pasta / Obra”. Assim ela fica pronta para seleção no Diário e acumula automaticamente metros, diárias e custo de campo da obra.
+              Na aba Obras, cadastre cada nova Pasta, Cliente, OS e Cidade/UF em “+ Nova Pasta / Obra”. A obra fica disponível no Diário e acumula automaticamente metros, diárias e custo mensal.
             </Text>
           </View>
         </View>
@@ -831,44 +831,44 @@ function TeneurManualDocument() {
           <View style={[s.cardWhite, s.col]}>
             <Text style={s.stepTitle}>Adicionando Outra Empresa</Text>
             <Text style={s.stepText}>
-              O Teneur é a sua ferramenta pessoal de gestão. Toque no nome da empresa logo abaixo de “Teneur” e clique em “+ Adicionar outra empresa” sempre que prestar serviços ou coordenar projetos para uma nova contratante.
+              Toque no nome da empresa logo abaixo de “Teneur” e escolha “+ Adicionar outra empresa” sempre que precisar gerenciar medições para outra contratante sem misturar os cabeçalhos dos PDFs.
             </Text>
           </View>
           <View style={[s.cardWhite, s.col]}>
-            <Text style={s.stepTitle}>Assinatura Técnica & CREA</Text>
+            <Text style={s.stepTitle}>Assinatura Técnica e CREA</Text>
             <Text style={s.stepText}>
-              Toque na Engrenagem (Configurações) para adicionar ou atualizar seu número do CREA abaixo de “Catherine Irina Pascoal Gouveia — Engenheira de Minas” em todos os PDFs emitidos pelo sistema.
+              No ícone de Engrenagem (Configurações), você pode informar ou atualizar o número do seu CREA abaixo de “Catherine Irina Pascoal Gouveia — Engenheira de Minas” em todos os PDFs gerados.
             </Text>
           </View>
         </View>
 
-        <Text style={s.h2}>Checklist de Bolso — Sua rotina leve com o Teneur</Text>
+        <Text style={s.h2}>Rotina recomendada de uso</Text>
         <View style={s.cardOchre}>
           <View style={{ marginBottom: 7 }}>
             <Text style={[s.stepTitle, { color: COLORS.teal }]}>
-              Todo fim de tarde (15 segundos no iPhone)
+              No fim do dia
             </Text>
             <Text style={s.stepText}>
-              Abrir o app Teneur, acessar a aba Diário, tocar no dia de hoje das equipes ativas e lançar os furos, ensaios ou status do dia.
+              Abrir o Teneur, acessar a aba Diário, selecionar o dia das equipes ativas e registrar os furos, ensaios ou status do dia.
             </Text>
           </View>
           <View style={{ marginBottom: 7 }}>
             <Text style={[s.stepTitle, { color: COLORS.ochre }]}>
-              Durante o mês (quando ocorrer)
+              Ao longo do mês
             </Text>
             <Text style={s.stepText}>
-              Lançar trechos de mobilização (km) e reembolsos com foto/número da nota fiscal na aba Medições para não acumular nada para o último dia.
+              Registrar trechos de mobilização (km) e reembolsos com referência da nota fiscal na aba Medições conforme forem acontecendo.
             </Text>
           </View>
           <View>
             <Text style={[s.stepTitle, { color: COLORS.green }]}>
-              Todo dia 28 / fechamento do mês
+              No fechamento do mês (dia 28)
             </Text>
             <Text style={s.stepText}>
-              1. Conferir se restou algum dia sem registro no Radar de Lacunas;{'\n'}
-              2. Lançar a Folha CLT (Item 4.6) de cada equipe aplicável;{'\n'}
-              3. Conferir o Saldo a Pagar, mudar o status para “Fechada” e baixar o Boletim PDF + copiar o Resumo WhatsApp;{'\n'}
-              4. Ir em Visão Geral e baixar o Relatório Executivo NBR (PDF) pronto para apresentação!
+              1. Verificar se restou algum dia sem registro na Cobertura do Mês;{'\n'}
+              2. Lançar a Folha CLT (Item 4.6) das equipes aplicáveis;{'\n'}
+              3. Conferir o Saldo a Pagar, alterar o status para “Fechada”, baixar o Boletim PDF e copiar o Resumo WhatsApp;{'\n'}
+              4. Abrir a Visão Geral e baixar o Relatório Executivo NBR em PDF.
             </Text>
           </View>
         </View>
@@ -879,7 +879,7 @@ function TeneurManualDocument() {
             Teneur — Gestão de Serviços
           </Text>
           <Text style={{ fontSize: 8.4, color: COLORS.slate, textAlign: 'center', marginTop: 3, maxWidth: 380 }}>
-            Criado com engenharia de precisão e muito carinho para deixar o dia a dia da Engenheira de Minas Catherine Irina Pascoal Gouveia mais simples, rápido e elegante.
+            Manual de referência preparado para Catherine Irina Pascoal Gouveia, Engenheira de Minas. Consulte este guia sempre que precisar revisar alguma etapa do sistema.
           </Text>
           <Text style={{ fontSize: 8, fontFamily: 'Helvetica-Bold', color: COLORS.teal, marginTop: 7 }}>
             https://teneur.vercel.app · Desenvolvido por Okapi Code Forge
