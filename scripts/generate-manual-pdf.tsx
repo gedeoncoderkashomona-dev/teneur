@@ -289,67 +289,67 @@ function Step({
 
 function IphoneInstallDiagram() {
   return (
-    <Svg width="495" height="114" viewBox="0 0 495 114">
+    <Svg width="495" height="98" viewBox="0 0 495 106">
       {/* Passo A: Barra inferior do Safari */}
-      <Rect x="2" y="4" width="152" height="104" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
-      <Text x="14" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+      <Rect x="2" y="2" width="152" height="100" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
+      <Text x="14" y="18" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
         PASSO 1 E 2 · NO SAFARI
       </Text>
-      <Rect x="14" y="30" width="128" height="18" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
-      <Text x="32" y="41.5" style={{ fontSize: 7, fill: '#181B20' }}>
+      <Rect x="14" y="26" width="128" height="18" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
+      <Text x="32" y="37.5" style={{ fontSize: 7, fill: '#181B20' }}>
         teneur.vercel.app
       </Text>
       {/* Barra inferior simulada do Safari */}
-      <Rect x="14" y="57" width="128" height="28" rx="6" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
-      <Text x="23" y="74" style={{ fontSize: 9, fill: '#94A3B8' }}>&lt;</Text>
-      <Text x="43" y="74" style={{ fontSize: 9, fill: '#94A3B8' }}>&gt;</Text>
+      <Rect x="14" y="52" width="128" height="27" rx="6" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
+      <Text x="23" y="69" style={{ fontSize: 9, fill: '#94A3B8' }}>&lt;</Text>
+      <Text x="43" y="69" style={{ fontSize: 9, fill: '#94A3B8' }}>&gt;</Text>
       {/* Destaque no botão Compartilhar */}
-      <Rect x="64" y="60" width="28" height="22" rx="5" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
-      <Path d="M78 76 V65 M74.5 68.5 L78 65 L81.5 68.5" stroke="#1F6E7A" strokeWidth="1.4" fill="none" />
-      <Rect x="73" y="71" width="10" height="7" rx="1.2" fill="none" stroke="#1F6E7A" strokeWidth="1.1" />
-      <Circle cx="108" cy="71" r="2.2" fill="#CBD5E1" />
-      <Rect x="122" y="67" width="10" height="8" rx="1.5" fill="none" stroke="#94A3B8" strokeWidth="1" />
-      <Text x="23" y="99" style={{ fontSize: 6.8, fill: '#525B68' }}>
+      <Rect x="64" y="55" width="28" height="21" rx="5" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
+      <Path d="M78 70.5 V60 M74.5 63.5 L78 60 L81.5 63.5" stroke="#1F6E7A" strokeWidth="1.4" fill="none" />
+      <Rect x="73" y="66" width="10" height="7" rx="1.2" fill="none" stroke="#1F6E7A" strokeWidth="1.1" />
+      <Circle cx="108" cy="66" r="2.2" fill="#CBD5E1" />
+      <Rect x="122" y="62" width="10" height="8" rx="1.5" fill="none" stroke="#94A3B8" strokeWidth="1" />
+      <Text x="23" y="93" style={{ fontSize: 6.8, fill: '#525B68' }}>
         Toque no ícone em destaque
       </Text>
 
       {/* Seta 1 */}
-      <Path d="M159 56 H170 M166 52 L170 56 L166 60" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
+      <Path d="M159 52 H170 M166 48 L170 52 L166 56" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
 
       {/* Passo B: Menu que sobe no iPhone */}
-      <Rect x="175" y="4" width="152" height="104" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
-      <Text x="187" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+      <Rect x="175" y="2" width="152" height="100" rx="10" fill="#F8FAFB" stroke="#DCE3E8" strokeWidth="1" />
+      <Text x="187" y="18" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
         PASSO 3 · MENU DO IPHONE
       </Text>
-      <Rect x="187" y="31" width="128" height="16" rx="4" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth="0.7" />
-      <Text x="195" y="41.5" style={{ fontSize: 6.8, fill: '#94A3B8' }}>Copiar link</Text>
-      <Rect x="187" y="51" width="128" height="26" rx="6" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
-      <Text x="195" y="62.5" style={{ fontSize: 7.3, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
+      <Rect x="187" y="27" width="128" height="16" rx="4" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth="0.7" />
+      <Text x="195" y="37.5" style={{ fontSize: 6.8, fill: '#94A3B8' }}>Copiar link</Text>
+      <Rect x="187" y="47" width="128" height="26" rx="6" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1.2" />
+      <Text x="195" y="58.5" style={{ fontSize: 7.3, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
         Adicionar à Tela de Início
       </Text>
-      <Text x="195" y="72" style={{ fontSize: 6.5, fill: '#1F6E7A' }}>
+      <Text x="195" y="68" style={{ fontSize: 6.5, fill: '#1F6E7A' }}>
         Toque nesta opção (+)
       </Text>
-      <Text x="187" y="99" style={{ fontSize: 6.8, fill: '#525B68' }}>
+      <Text x="187" y="93" style={{ fontSize: 6.8, fill: '#525B68' }}>
         Deslize o menu para cima se precisar
       </Text>
 
       {/* Seta 2 */}
-      <Path d="M332 56 H343 M339 52 L343 56 L339 60" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
+      <Path d="M332 52 H343 M339 48 L343 52 L339 56" stroke="#1F6E7A" strokeWidth="1.3" fill="none" />
 
       {/* Passo C: Ícone na Tela de Início */}
-      <Rect x="348" y="4" width="145" height="104" rx="10" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1" />
-      <Text x="360" y="21" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
+      <Rect x="348" y="2" width="145" height="100" rx="10" fill="#EAF3F5" stroke="#1F6E7A" strokeWidth="1" />
+      <Text x="360" y="18" style={{ fontSize: 7.4, fontFamily: 'Helvetica-Bold', fill: '#1F6E7A' }}>
         PASSO 4 · APP PRONTO!
       </Text>
-      <Rect x="401" y="33" width="38" height="38" rx="10" fill="#1F6E7A" />
-      <Path d="M411 45 H429 M420 45 V61" stroke="#FFFFFF" strokeWidth="2.3" strokeLinecap="round" />
-      <Path d="M414 53 L420 59 L426 53" stroke="#E0A94B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <Circle cx="420" cy="40" r="1.9" fill="#E0A94B" />
-      <Text x="404" y="84" style={{ fontSize: 8, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
+      <Rect x="401" y="29" width="38" height="38" rx="10" fill="#1F6E7A" />
+      <Path d="M411 41 H429 M420 41 V57" stroke="#FFFFFF" strokeWidth="2.3" strokeLinecap="round" />
+      <Path d="M414 49 L420 55 L426 49" stroke="#E0A94B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <Circle cx="420" cy="36" r="1.9" fill="#E0A94B" />
+      <Text x="404" y="79" style={{ fontSize: 8, fontFamily: 'Helvetica-Bold', fill: '#181B20' }}>
         Teneur
       </Text>
-      <Text x="365" y="98" style={{ fontSize: 6.8, fill: '#525B68' }}>
+      <Text x="365" y="92" style={{ fontSize: 6.8, fill: '#525B68' }}>
         Abre em tela cheia como app
       </Text>
     </Svg>
@@ -527,16 +527,16 @@ function TeneurManualDocument() {
           Você pode salvar o Teneur direto na tela do seu iPhone para usá-lo igualzinho a um aplicativo baixado da App Store — em tela cheia, super rápido e sem precisar digitar o site toda vez.
         </Text>
 
-        <Text style={s.h2}>2.1 Passo a passo para instalar no iPhone (leva 20 segundos)</Text>
-        <View style={[s.cardWhite, { padding: 10 }]}>
+        <Text style={[s.h2, { marginTop: 6, marginBottom: 4 }]}>2.1 Passo a passo para instalar no iPhone (leva 20 segundos)</Text>
+        <View style={[s.cardWhite, { padding: 8, marginBottom: 7 }]}>
           <IphoneInstallDiagram />
         </View>
 
-        <View style={s.card}>
+        <View style={[s.card, { padding: 10, marginBottom: 7 }]}>
           <Step
             num="1"
             title="Abra o link usando o Safari"
-            text="No seu iPhone, abra o navegador Safari (o ícone da bússola azul) e digite https://teneur.vercel.app. Dica: faça sempre pelo Safari para liberar o modo aplicativo em tela cheia."
+            text="No seu iPhone, abra o Safari (ícone da bússola azul) e acesse https://teneur.vercel.app. Faça sempre pelo Safari para liberar o modo aplicativo em tela cheia."
           />
           <Step
             num="2"
@@ -546,43 +546,43 @@ function TeneurManualDocument() {
           <Step
             num="3"
             title="Escolha “Adicionar à Tela de Início”"
-            text="Um menu vai subir de baixo para cima. Deslize esse menu com o dedo para cima e toque na opção “Adicionar à Tela de Início”."
+            text="Um menu vai subir. Deslize esse menu para cima e toque na opção “Adicionar à Tela de Início”."
           />
           <Step
             num="4"
             title="Toque em “Adicionar” e pronto!"
-            text="Confirme tocando em “Adicionar” no canto superior direito. O ícone verde-petróleo do Teneur vai aparecer na tela do seu iPhone junto com seus outros aplicativos!"
+            text="Confirme no canto superior direito. O ícone verde-petróleo do Teneur aparecerá junto com seus outros aplicativos!"
           />
         </View>
 
-        <View style={s.grid2}>
-          <View style={[s.cardTeal, s.col]}>
+        <View style={[s.grid2, { marginBottom: 7 }]}>
+          <View style={[s.cardTeal, s.col, { padding: 10, marginBottom: 0 }]}>
             <Text style={s.kicker}>2.2 Notificações no iPhone</Text>
             <Text style={s.stepTitle}>Alertas diretos no aparelho</Text>
-            <Text style={[s.stepText, { marginTop: 3 }]}>
+            <Text style={[s.stepText, { marginTop: 2 }]}>
               1. Abra o Teneur pelo ícone da Tela de Início.{'\n'}
-              2. Toque no ícone de Sininho no canto superior direito.{'\n'}
+              2. Toque no ícone de Sininho no topo direito.{'\n'}
               3. Toque em “Ativar notificações neste dispositivo” e depois em “Permitir”.{'\n'}
-              4. Use “Testar notificação” para ver o alerta chegar na hora!
+              4. Use “Testar notificação” para confirmar!
             </Text>
           </View>
 
-          <View style={[s.cardOchre, s.col]}>
+          <View style={[s.cardOchre, s.col, { padding: 10, marginBottom: 0 }]}>
             <Text style={[s.kicker, { color: COLORS.ochre }]}>2.3 Calendário do Celular</Text>
             <Text style={s.stepTitle}>Lembretes automáticos (Diário + Mensal)</Text>
-            <Text style={[s.stepText, { marginTop: 3 }]}>
-              1. No mesmo menu do Sininho, escolha a hora do lembrete diário (ex.: 18:00) e o dia do fechamento mensal (ex.: dia 28).{'\n'}
+            <Text style={[s.stepText, { marginTop: 2 }]}>
+              1. No mesmo menu do Sininho, escolha o horário do lembrete diário (ex.: 18:00) e o dia do fechamento mensal (ex.: dia 28).{'\n'}
               2. Toque em “Adicionar Lembrete Diário + Mensal ao Calendário”.{'\n'}
-              3. O iPhone abre o Calendário na hora — toque em “Adicionar Tudo” e pronto!
+              3. Toque em “Adicionar Tudo” no app Calendário!
             </Text>
           </View>
         </View>
 
-        <View style={s.card}>
+        <View style={[s.card, { padding: 10, marginBottom: 0 }]}>
           <Text style={s.stepTitle}>O que o Calendário vai te lembrar automaticamente</Text>
           <Text style={s.stepText}>
-            • De segunda a sábado (no horário escolhido): aviso suave 10 minutos antes com link direto para registrar o dia das equipes no Diário de Campo.{'\n'}
-            • Todo dia 28 (e na véspera): lembrete para conferir dias sem registro, fechar os Boletins de Medição e baixar o Relatório Executivo NBR pronto para sua apresentação mensal.
+            • Segunda a sábado (no horário escolhido): aviso 10 minutos antes com link direto para o Diário de Campo.{'\n'}
+            • Todo dia 28 (e na véspera): lembrete para conferir dias sem registro, fechar os Boletins e baixar o Relatório NBR mensal.
           </Text>
         </View>
       </Page>
@@ -891,16 +891,27 @@ function TeneurManualDocument() {
 }
 
 async function main() {
-  const outputPath = path.resolve(
+  const primaryPath = path.resolve(process.cwd(), '..', 'Teneur - Manual de Uso.pdf');
+  const fallbackPath = path.resolve(
     process.cwd(),
     '..',
-    'Teneur - Manual de Uso.pdf'
+    'Teneur - Manual de Uso (Atualizado).pdf'
   );
   const buffer = await renderToBuffer(
     React.createElement(TeneurManualDocument) as unknown as React.ReactElement<Record<string, unknown>>
   );
-  fs.writeFileSync(outputPath, buffer);
-  console.log(`Manual gerado com sucesso em: ${outputPath} (${buffer.byteLength} bytes)`);
+  try {
+    fs.writeFileSync(primaryPath, buffer);
+    console.log(`Manual gerado com sucesso em: ${primaryPath} (${buffer.byteLength} bytes)`);
+  } catch (err) {
+    const code = (err as NodeJS.ErrnoException).code;
+    if (code === 'EBUSY' || code === 'EPERM') {
+      fs.writeFileSync(fallbackPath, buffer);
+      console.log(`Arquivo principal em uso. Manual atualizado salvo em: ${fallbackPath} (${buffer.byteLength} bytes)`);
+      return;
+    }
+    throw err;
+  }
 }
 
 main().catch((err) => {
